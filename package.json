@@ -1,0 +1,22 @@
+{
+  "name": "radui-mcp",
+  "version": "1.0.2",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "radui-mcp": "./server.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "zod": "^3.25.36"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
