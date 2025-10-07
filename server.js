@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
@@ -8,7 +9,7 @@ import * as cheerio from 'cheerio';
 
 const server = new McpServer({
   name: "arsh-ui-docs",
-  version: "1.0.0",
+  version: "1.0.5",
   capabilities: { tools: {} }
 });
 
@@ -99,7 +100,7 @@ server.tool(
   "Retrieve code examples and usage patterns",
   { name: z.string() },
   async ({ name }) => {
-    const res = await fetch(`${DOCS_BASE}/${name}`);
+    const res = await fetch(`${DOCS_BASE}/${name.toLowerCase()}`);
     const html = await res.text();
     const $ = cheerio.load(html);
 
