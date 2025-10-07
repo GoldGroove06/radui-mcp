@@ -1,0 +1,31 @@
+{
+  "title": "Components",
+  "items": [
+    { "title": "Accordion", "path": "/docs/components/accordion" },
+    { "title": "Avatar", "path": "/docs/components/avatar" },
+    { "title": "AvatarGroup", "path": "/docs/components/avatar-group" },
+    { "title": "AlertDialog", "path": "/docs/components/alert-dialog", "is_new": true },
+    { "title": "AspectRatio", "path": "/docs/components/aspect-ratio" },
+    { "title": "Badge", "path": "/docs/components/badge" },
+    { "title": "Button", "path": "/docs/components/button" },
+    { "title": "BlockQuote", "path": "/docs/components/blockquote" },
+    { "title": "Callout", "path": "/docs/components/callout" },
+    { "title": "Card", "path": "/docs/components/card" },
+    { "title": "Code", "path": "/docs/components/code" },
+    { "title": "Dialog", "path": "/docs/components/dialog", "is_new": true },
+    { "title": "Em", "path": "/docs/components/em" },
+    { "title": "Heading", "path": "/docs/components/heading" },
+    { "title": "Text", "path": "/docs/components/text" },
+    { "title": "Kbd", "path": "/docs/components/kbd" },
+    { "title": "Progress", "path": "/docs/components/progress" },
+    { "title": "Separator", "path": "/docs/components/separator" },
+    { "title": "Strong", "path": "/docs/components/strong" },
+    { "title": "Switch", "path": "/docs/components/switch" },
+    { "title": "Table", "path": "/docs/components/table", "is_new": true },
+    { "title": "Tabs", "path": "/docs/components/tabs", "is_new": true },
+    { "title": "Toggle", "path": "/docs/components/toggle" },
+    { "title": "ToggleGroup", "path": "/docs/components/toggle-group" },
+    { "title": "Tooltip", "path": "/docs/components/tooltip" },
+    { "title": "VisuallyHidden", "path": "/docs/components/visually-hidden" }
+  ]
+}
