@@ -1,0 +1,46 @@
+/** TABS  */
+.rad-ui-tabs{
+    .rad-ui-tabs-list{
+        display: flex;
+        box-shadow: inset 0 -1px 0 0 var(--rad-ui-color-gray-500);
+
+
+        .rad-ui-tabs-trigger {
+            color: var(--rad-ui-color-accent-600);
+            font-family: inherit;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            height:42px;
+            font-size: 15px;
+            line-height: 1;
+            cursor: pointer;
+
+
+            &:focus-visible{
+                background-color: var(--rad-ui-color-accent-100);
+                outline:2px solid var(--rad-ui-color-blue-950);
+                outline-offset: 2px;
+                border-radius: 1px;
+            }
+
+            &.active{
+                color: var(--rad-ui-color-accent-950);
+                border-bottom:2px solid var(--rad-ui-color-accent-900);
+            }
+
+            &:hover{
+                color: var(--rad-ui-color-accent-900);
+            }
+        }
+    }
+
+    .rad-ui-tab-content{
+        padding:20px 0;
+        color : var(--rad-ui-color-gray-1000);
+    }
+    
+}
+
+
+
