@@ -1,0 +1,364 @@
+{
+  "component": "alert-dialog",
+  "codeUsagePath": "app/docs/components/alert-dialog/docs/codeUsage.js",
+  "exports": {
+    "code": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport AlertDialog from \"@radui/ui/AlertDialog\";\r\n\r\nconst AlertDialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <AlertDialog.Root>\r\n        <AlertDialog.Trigger>\r\n          Open Dialog\r\n        </AlertDialog.Trigger>\r\n        <AlertDialog.Portal>\r\n          <AlertDialog.Overlay />\r\n          <AlertDialog.Content>\r\n            <AlertDialog.Title>\r\n              Are you sure you want to delete this file?\r\n            </AlertDialog.Title>\r\n            <AlertDialog.Description>\r\n              This action cannot be undone.\r\n            </AlertDialog.Description>\r\n            <AlertDialog.Action>\r\n              Delete\r\n            </AlertDialog.Action>\r\n            <AlertDialog.Cancel>\r\n              Cancel\r\n            </AlertDialog.Cancel>\r\n          </AlertDialog.Content>\r\n        </AlertDialog.Portal>\r\n      </AlertDialog.Root>\r\n    </div>)\r\n}\r\n\r\nexport default AlertDialogExample;"
+      },
+      "scss": {
+        "code": "@use 'button';\r\n\r\n.rad-ui-alert-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n.rad-ui-alert-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n  \r\n  &[data-disabled] {\r\n    opacity: 0.5;\r\n    cursor: not-allowed;\r\n    pointer-events: none;\r\n  }\r\n  \r\n}\r\n\r\n.rad-ui-alert-dialog-content {\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-600);\r\n  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n    transform: translate(-50%, -50%) scale(1);\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    transform: translate(-50%, -50%) scale(0.95);\r\n  }\r\n\r\n  .rad-ui-alert-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n\r\n  .rad-ui-alert-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n  \r\n\r\n  .rad-ui-alert-dialog-cancel {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-red-1000);\r\n    background-color: var(--rad-ui-color-red-500);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-red-600);\r\n    }\r\n  }\r\n\r\n  .rad-ui-alert-dialog-action {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border: 1px solid var(--rad-ui-color-gray-500);\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-100);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-300);\r\n    }\r\n  }\r\n}"
+      }
+    },
+    "anatomy": {
+      "code": "import AlertDialog from \"@radui/ui/AlertDialog\";\r\n\r\nexport default () => {\r\n    return (\r\n        <AlertDialog.Root>\r\n            <AlertDialog.Trigger/>\r\n            <AlertDialog.Portal>\r\n                <AlertDialog.Overlay/>\r\n                <AlertDialog.Content>\r\n                    <AlertDialog.Title/>\r\n                    <AlertDialog.Description/>\r\n                    <AlertDialog.Cancel/>\r\n                    <AlertDialog.Action/>\r\n                </AlertDialog.Content>\r\n            </AlertDialog.Portal>\r\n        </AlertDialog.Root>\r\n    )\r\n}"
+    },
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "The root component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "The custom class name for the AlertDialogRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "open",
+              "info_tooltips": "The boolean to control the open state of the AlertDialogRoot."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "onOpenChange",
+              "info_tooltips": "The function to handle the open change of the AlertDialogRoot."
+            },
+            "type": "function",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "onClickOutside",
+              "info_tooltips": "The function to handle the click outside of the AlertDialogRoot."
+            },
+            "type": "function",
+            "default": "--"
+          }
+        ]
+      },
+      "trigger": {
+        "name": "Trigger",
+        "description": "The trigger component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogTrigger."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the AlertDialogTrigger."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      },
+      "title": {
+        "name": "Title",
+        "description": "The title component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogTitle."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AlertDialogTitle."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "description": {
+        "name": "Description",
+        "description": "The description component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogDescription."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AlertDialogDescription."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "portal": {
+        "name": "Portal",
+        "description": "The portal component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AlertDialogPortal."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "overlay": {
+        "name": "Overlay",
+        "description": "The overlay component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogOverlay."
+            }
+          }
+        ]
+      },
+      "content": {
+        "name": "Content",
+        "description": "The content component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogContent."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AlertDialogContent."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "cancel": {
+        "name": "Cancel",
+        "description": "The cancel component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogCancel."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AlertDialogCancel."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the AlertDialogCancel."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      },
+      "action": {
+        "name": "Action",
+        "description": "The action component for the AlertDialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AlertDialogAction."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AlertDialogAction."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the AlertDialogAction."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      }
+    },
+    "default": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport AlertDialog from \"@radui/ui/AlertDialog\";\r\n\r\nconst AlertDialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <AlertDialog.Root>\r\n        <AlertDialog.Trigger>\r\n          Open Dialog\r\n        </AlertDialog.Trigger>\r\n        <AlertDialog.Portal>\r\n          <AlertDialog.Overlay />\r\n          <AlertDialog.Content>\r\n            <AlertDialog.Title>\r\n              Are you sure you want to delete this file?\r\n            </AlertDialog.Title>\r\n            <AlertDialog.Description>\r\n              This action cannot be undone.\r\n            </AlertDialog.Description>\r\n            <AlertDialog.Action>\r\n              Delete\r\n            </AlertDialog.Action>\r\n            <AlertDialog.Cancel>\r\n              Cancel\r\n            </AlertDialog.Cancel>\r\n          </AlertDialog.Content>\r\n        </AlertDialog.Portal>\r\n      </AlertDialog.Root>\r\n    </div>)\r\n}\r\n\r\nexport default AlertDialogExample;"
+      },
+      "scss": {
+        "code": "@use 'button';\r\n\r\n.rad-ui-alert-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n.rad-ui-alert-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n  \r\n  &[data-disabled] {\r\n    opacity: 0.5;\r\n    cursor: not-allowed;\r\n    pointer-events: none;\r\n  }\r\n  \r\n}\r\n\r\n.rad-ui-alert-dialog-content {\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-600);\r\n  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n    transform: translate(-50%, -50%) scale(1);\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    transform: translate(-50%, -50%) scale(0.95);\r\n  }\r\n\r\n  .rad-ui-alert-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n\r\n  .rad-ui-alert-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n  \r\n\r\n  .rad-ui-alert-dialog-cancel {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-red-1000);\r\n    background-color: var(--rad-ui-color-red-500);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-red-600);\r\n    }\r\n  }\r\n\r\n  .rad-ui-alert-dialog-action {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border: 1px solid var(--rad-ui-color-gray-500);\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-100);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-300);\r\n    }\r\n  }\r\n}"
+      }
+    }
+  },
+  "notes": []
+}

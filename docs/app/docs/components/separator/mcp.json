@@ -1,0 +1,116 @@
+{
+  "component": "separator",
+  "codeUsagePath": "app/docs/components/separator/docs/codeUsage.js",
+  "exports": {
+    "api_documentation": {
+      "separator": {
+        "name": "Separator",
+        "description": "A component that visually separates content with a horizontal or vertical line, providing visual hierarchy and improved content organization.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "orientation",
+              "info_tooltips": "Determines whether the separator displays as a horizontal or vertical line."
+            },
+            "type": "enum",
+            "enum_values": [
+              "horizontal",
+              "vertical"
+            ],
+            "default": "'horizontal'"
+          },
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "Additional CSS class names to apply to the separator."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "Custom root class name to override default styling."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "color",
+              "info_tooltips": "Color theme of the separator line."
+            },
+            "type": "string",
+            "default": "''"
+          }
+        ]
+      }
+    },
+    "features": [
+      "Support for both horizontal and vertical orientation",
+      "Customizable with different color themes",
+      "Helps establish visual hierarchy in layouts",
+      "Simple integration with minimal props required",
+      "Lightweight implementation with proper spacing"
+    ],
+    "SeparatorTable": {
+      "columns": [
+        {
+          "name": "Prop",
+          "id": "prop"
+        },
+        {
+          "name": "Type",
+          "id": "type"
+        },
+        {
+          "name": "Default",
+          "id": "default"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "prop": "color",
+          "type": "string",
+          "default": "null",
+          "description": "Accent Color of the separator",
+          "id": "color"
+        },
+        {
+          "prop": "orientation",
+          "type": "horizontal | vertical",
+          "default": "horizontal",
+          "description": "orientation of the separator",
+          "id": "orientation"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {
+        "code": "import Separator from \"@radui/ui/Separator\"\nimport Text from \"@radui/ui/Text\"\n\nconst SeparatorExample = () => (\n    <div>\n        <div>\n            <Text>Welcome to Rad UI</Text>\n        </div>\n        <Separator />\n        <div style={{ display:\"flex\", alignItems: \"center\" }}>\n            <Text>Modern</Text>\n            <Separator orientation=\"vertical\" />\n            <Text>Accessible</Text>\n            <Separator orientation=\"vertical\" />\n            <Text>Performant</Text>\n        </div>\n    </div>\n)"
+      },
+      "scss": {
+        "code": "/** Separator */\n.rad-ui-separator {\n    background-color: var(--rad-ui-color-gray-600);\n    align-self: stretch;\n}\n\n.rad-ui-separator-vertical{\n    margin: 0px 8px;\n    width: 1px;\n}\n\n.rad-ui-separator-horizontal{\n    margin: 8px 0px;\n    height: 1px;\n}"
+      }
+    }
+  },
+  "notes": []
+}

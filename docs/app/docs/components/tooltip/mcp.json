@@ -1,0 +1,240 @@
+{
+  "component": "tooltip",
+  "codeUsagePath": "app/docs/components/tooltip/docs/codeUsage.js",
+  "exports": {
+    "anatomy": {
+      "code": "import Tooltip from \"@radui/ui/Tooltip\";\r\n\r\nexport default () => {\r\n  return (\r\n    <Tooltip.Root>\r\n      <Tooltip.Trigger>\r\n        {/* Your trigger element */}\r\n      </Tooltip.Trigger>\r\n      <Tooltip.Content>\r\n        {/* Your tooltip content */}\r\n      </Tooltip.Content>\r\n    </Tooltip.Root>\r\n  );\r\n} "
+    },
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "The wrapper component that provides context for the tooltip.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "defaultOpen",
+              "info_tooltips": "Whether the tooltip is open by default."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "open",
+              "info_tooltips": "Controlled open state of the tooltip."
+            },
+            "type": "boolean",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "onOpenChange",
+              "info_tooltips": "Callback called when open state changes."
+            },
+            "type": "function",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "delayDuration",
+              "info_tooltips": "Duration from when the mouse enters the trigger until the tooltip opens."
+            },
+            "type": "number",
+            "default": "700"
+          }
+        ]
+      },
+      "trigger": {
+        "name": "Trigger",
+        "description": "The element that triggers the tooltip. Must be an interactive element.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "When true, tooltip will be rendered in the DOM as the child component of the trigger element rather than as a sibling."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      },
+      "content": {
+        "name": "Content",
+        "description": "The content displayed inside the tooltip.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "side",
+              "info_tooltips": "The preferred side of the trigger to render against."
+            },
+            "type": "enum",
+            "enum_values": [
+              "top",
+              "right",
+              "bottom",
+              "left"
+            ],
+            "default": "top"
+          },
+          {
+            "prop": {
+              "name": "sideOffset",
+              "info_tooltips": "The distance in pixels from the trigger."
+            },
+            "type": "number",
+            "default": "5"
+          },
+          {
+            "prop": {
+              "name": "align",
+              "info_tooltips": "The preferred alignment against the trigger."
+            },
+            "type": "enum",
+            "enum_values": [
+              "start",
+              "center",
+              "end"
+            ],
+            "default": "center"
+          },
+          {
+            "prop": {
+              "name": "alignOffset",
+              "info_tooltips": "An offset in pixels from the edge of the boundary."
+            },
+            "type": "number",
+            "default": "0"
+          },
+          {
+            "prop": {
+              "name": "avoidCollisions",
+              "info_tooltips": "When true, overrides the side and align preferences to prevent collisions with boundary edges."
+            },
+            "type": "boolean",
+            "default": "true"
+          },
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "Additional CSS class name for styling."
+            },
+            "type": "string",
+            "default": "--"
+          }
+        ]
+      }
+    },
+    "keyboardShortcuts": {
+      "columns": [
+        {
+          "name": "Shortcut",
+          "id": "shortcut"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "shortcut": "<Kbd>Tab</Kbd>",
+          "description": "<Text>\r\n                Moves focus to the trigger element.\r\n            </Text>",
+          "id": "tab"
+        },
+        {
+          "shortcut": "<Kbd>Space</Kbd>",
+          "description": "<Text>\r\n                When focus is on the trigger, toggles the tooltip.\r\n            </Text>",
+          "id": "space"
+        },
+        {
+          "shortcut": "<Kbd>Enter</Kbd>",
+          "description": "<Text>\r\n                When focus is on the trigger, toggles the tooltip.\r\n            </Text>",
+          "id": "enter"
+        },
+        {
+          "shortcut": "<Kbd>Escape</Kbd>",
+          "description": "<Text>\r\n                Dismisses an open tooltip.\r\n            </Text>",
+          "id": "escape"
+        }
+      ]
+    },
+    "TooltipTable": {
+      "columns": [
+        {
+          "name": "Prop",
+          "id": "prop"
+        },
+        {
+          "name": "Type",
+          "id": "type"
+        },
+        {
+          "name": "Default",
+          "id": "default"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "prop": "content",
+          "type": "string",
+          "default": "null",
+          "description": "content/text on hover",
+          "id": "src"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {},
+      "css": {
+        "code": "todo"
+      }
+    }
+  },
+  "notes": []
+}

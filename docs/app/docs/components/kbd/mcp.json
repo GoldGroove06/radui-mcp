@@ -1,0 +1,76 @@
+{
+  "component": "kbd",
+  "codeUsagePath": "app/docs/components/kbd/docs/codeUsage.js",
+  "exports": {
+    "api_documentation": {
+      "kbd": {
+        "name": "Kbd",
+        "description": "A component that visually represents keyboard buttons or key combinations, often used in documentation to indicate keyboard shortcuts or commands.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The content to be displayed inside the keyboard key element."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "Additional CSS class names to apply to the kbd element."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "Custom root class name to override default styling."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "size",
+              "info_tooltips": "Size variant of the keyboard key."
+            },
+            "type": "string",
+            "default": "''"
+          }
+        ]
+      }
+    },
+    "features": [
+      "Visual representation of keyboard keys and shortcuts",
+      "Pre-styled with appropriate borders and shadows",
+      "Customizable with size variants",
+      "Maintains semantic meaning with proper <kbd> HTML element",
+      "Ideal for documenting keyboard interactions and shortcuts"
+    ],
+    "default": {
+      "javascript": {
+        "code": "import Kbd from \"@radui/ui/Kbd\";\n\nconst KbdExample = () => (\n  <Kbd>Ctrl + C</Kbd>\n)\n"
+      },
+      "css": {
+        "code": ".rad-ui-kbd{\n    user-select: none;\n    font-weight: 400;\n    font-family: inherit;\n    background-color: var(--rad-ui-color-gray-50);\n    color: var(--rad-ui-color-gray-950);\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    border-radius: 4px;\n    border: 1px solid var(--rad-ui-color-gray-500);\n    box-shadow:  0px 0px 3px 1px var(--rad-ui-color-gray-400);\n    padding: 4px 8px;\n}"
+      }
+    }
+  },
+  "notes": []
+}

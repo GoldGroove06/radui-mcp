@@ -1,0 +1,216 @@
+{
+  "component": "avatar",
+  "codeUsagePath": "app/docs/components/avatar/docs/codeUsage.js",
+  "exports": {
+    "code": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Avatar from \"@radui/ui/Avatar\"\r\n\r\nconst AvatarExample = () => {\r\n    return <Avatar.Root>\r\n        <Avatar.Image src=\"https://i.pravatar.cc/1000\" />\r\n        <Avatar.Fallback>KL</Avatar.Fallback>\r\n    </Avatar.Root>\r\n}\r\n\r\nexport default AvatarExample;"
+      },
+      "scss": {
+        "code": ".rad-ui-avatar{\r\n    position: relative;\r\n    width:36px;\r\n    height:36px;\r\n    border-radius: 100%;\r\n    overflow: hidden;\r\n    border: 1px solid var(--rad-ui-color-gray-600);\r\n    display: flex;\r\n\r\n    .rad-ui-avatar-image{\r\n        position: absolute;\r\n        top: 0;\r\n        left: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        object-fit: cover;\r\n    }\r\n\r\n    .rad-ui-avatar-fallback{\r\n        display: flex;\r\n        align-items: center;\r\n        font-size: 16px;\r\n        justify-content: center;\r\n        color: var(--rad-ui-color-accent-900);\r\n        background-color: var(--rad-ui-color-accent-500);\r\n        width: 100%;\r\n        height:100%;\r\n    }\r\n}\r\n\r\n\r\n"
+      }
+    },
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "The root component for the Avatar.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AvatarRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "The class name for the AvatarRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the AvatarRoot."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AvatarRoot."
+            },
+            "type": "React.ReactNode",
+            "default": "null"
+          },
+          {
+            "prop": {
+              "name": "size",
+              "info_tooltips": "The size of the AvatarRoot."
+            },
+            "type": "string",
+            "default": "``"
+          },
+          {
+            "prop": {
+              "name": "variant",
+              "info_tooltips": "The variant of the AvatarRoot."
+            },
+            "type": "string",
+            "default": "``"
+          },
+          {
+            "prop": {
+              "name": "color",
+              "info_tooltips": "The color of the AvatarRoot."
+            },
+            "type": "string",
+            "default": "``"
+          }
+        ]
+      },
+      "image": {
+        "name": "Image",
+        "description": "The image component for the Avatar.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "src",
+              "info_tooltips": "The source of the image."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "alt",
+              "info_tooltips": "The alternative text for the image."
+            },
+            "type": "string",
+            "default": "--"
+          }
+        ]
+      },
+      "fallback": {
+        "name": "Fallback",
+        "description": "The fallback component for the Avatar when the image fails to load.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the AvatarFallback."
+            },
+            "type": "React.ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AvatarFallback."
+            },
+            "type": "string",
+            "default": "--"
+          }
+        ]
+      }
+    },
+    "avatarBasicUsageExample": {
+      "columns": [
+        {
+          "name": "Prop",
+          "id": "prop"
+        },
+        {
+          "name": "Type",
+          "id": "type"
+        },
+        {
+          "name": "Default",
+          "id": "default"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "prop": "src",
+          "type": "string",
+          "default": "null",
+          "description": "URL of the image to be displayed as the avatar.",
+          "id": "src"
+        },
+        {
+          "prop": "fallback",
+          "type": "string",
+          "default": "null",
+          "description": "Text initials or placeholder displayed when the image fails to load or if no src is provided.",
+          "id": "fallback"
+        },
+        {
+          "prop": "color",
+          "type": "string",
+          "default": "null",
+          "description": "Accent Color of the text initials or placeholder displayed when the image fails to load or if no src is provided.",
+          "id": "color"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Avatar from \"@radui/ui/Avatar\"\r\n\r\nconst AvatarExample = () => {\r\n    return <Avatar.Root>\r\n        <Avatar.Image src=\"https://i.pravatar.cc/1000\" />\r\n        <Avatar.Fallback>KL</Avatar.Fallback>\r\n    </Avatar.Root>\r\n}\r\n\r\nexport default AvatarExample;"
+      },
+      "scss": {
+        "code": ".rad-ui-avatar{\r\n    position: relative;\r\n    width:36px;\r\n    height:36px;\r\n    border-radius: 100%;\r\n    overflow: hidden;\r\n    border: 1px solid var(--rad-ui-color-gray-600);\r\n    display: flex;\r\n\r\n    .rad-ui-avatar-image{\r\n        position: absolute;\r\n        top: 0;\r\n        left: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        object-fit: cover;\r\n    }\r\n\r\n    .rad-ui-avatar-fallback{\r\n        display: flex;\r\n        align-items: center;\r\n        font-size: 16px;\r\n        justify-content: center;\r\n        color: var(--rad-ui-color-accent-900);\r\n        background-color: var(--rad-ui-color-accent-500);\r\n        width: 100%;\r\n        height:100%;\r\n    }\r\n}\r\n\r\n\r\n"
+      }
+    }
+  },
+  "notes": []
+}

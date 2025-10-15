@@ -1,0 +1,114 @@
+{
+  "component": "button",
+  "codeUsagePath": "app/docs/components/button/docs/codeUsage.js",
+  "exports": {
+    "api_documentation": {
+      "button": {
+        "name": "Button",
+        "description": "An interactive component used to trigger an action or event, such as submitting a form, opening a dialog, or performing a delete operation.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The content to be displayed inside the button."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "type",
+              "info_tooltips": "The type of the button HTML element."
+            },
+            "type": "enum",
+            "enum_values": [
+              "button",
+              "submit",
+              "reset"
+            ],
+            "default": "'button'"
+          },
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "Additional CSS class names to apply to the button."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "Custom root class name to override default styling."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "variant",
+              "info_tooltips": "Style variant of the button (solid, soft, outline, ghost)."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "size",
+              "info_tooltips": "Size variant of the button (small, medium, large)."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "color",
+              "info_tooltips": "Color theme of the button."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "disabled",
+              "info_tooltips": "Whether the button is disabled."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      }
+    },
+    "features": [
+      "Multiple style variants: solid, soft, outline, ghost",
+      "Different size options for various contexts",
+      "Customizable with different color themes",
+      "Support for icons and text content",
+      "Follows accessibility best practices",
+      "Can be used as buttons, links, or form submitters"
+    ],
+    "default": {
+      "javascript": {
+        "code": "import Button from \"@radui/ui/Button\"\n\nconst ButtonExample = () => (\n    <div>\n        <Button color=\"green\">Click Me!</Button>\n    </div>\n)"
+      },
+      "scss": {
+        "code": ".rad-ui-button{\n    height: 32px;\n    border-radius: 4px;\n    display:flex;\n    align-items:center;\n    justify-content:center;\n    padding:0px 12px;\n}\n.button-solid{\n    background-color: var(--rad-ui-color-accent-900);\n    color: white;\n}\n.button-solid:hover{\n    background-color: var(--rad-ui-color-accent-950);\n}\n\n/** Soft */\n.button-soft{\n    color: var(--rad-ui-color-accent-900);\n    background-color:  var(--rad-ui-color-accent-400);\n}\n.button-soft:hover{\n    background-color:  var(--rad-ui-color-accent-500);\n}\n\n\n/**Outline */\n.button-outline{\n    background-color: transparent;\n    color: var(--rad-ui-color-accent-900);\n    border: 1px solid var(--rad-ui-color-accent-900);\n}\n.button-outline:hover{\n    border-color:var(--rad-ui-color-accent-950) ;\n}\n\n/**Ghost */\n.button-ghost{\n    background-color: transparent;\n    color: var(--rad-ui-color-accent-900);\n}\n.button-ghost:hover{\n    border-color:var(--rad-ui-color-accent-950) ;\n    background-color: var(--rad-ui-color-accent-300);\n}"
+      }
+    }
+  },
+  "notes": []
+}

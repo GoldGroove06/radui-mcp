@@ -1,0 +1,75 @@
+{
+  "component": "card",
+  "codeUsagePath": "app/docs/components/card/docs/codeUsage.js",
+  "exports": {
+    "api_documentation": {
+      "card": {
+        "name": "Card",
+        "description": "A container component that groups related content and actions with consistent styling.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The content to be displayed inside the card."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "Additional CSS class names to apply to the card."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "Custom root class name to override default styling."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "data-accent-color",
+              "info_tooltips": "Accent color to apply to the card. Used as a data attribute."
+            },
+            "type": "string",
+            "default": "--"
+          }
+        ]
+      }
+    },
+    "features": [
+      "Provides a consistent container with proper spacing and borders",
+      "Supports custom styling through className and customRootClass",
+      "Can be customized with accent colors",
+      "Works well with other components to create structured layouts"
+    ],
+    "default": {
+      "javascript": {
+        "code": "import Card from \"@radui/ui/Card\"\n        \nconst CardExample = () => (\n    <Card>\n        Hello Card content\n    </Card>\n)"
+      },
+      "scss": {
+        "code": ".rad-ui-card{\n    border: 1px solid var(--rad-ui-color-gray-400);\n    padding: 12px;\n    border-radius: 4px;\n    box-shadow: 1px 1px 4px 1px var(--rad-ui-color-gray-200);\n}"
+      }
+    }
+  },
+  "notes": []
+}

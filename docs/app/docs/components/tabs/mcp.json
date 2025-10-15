@@ -1,0 +1,236 @@
+{
+  "component": "tabs",
+  "codeUsagePath": "app/docs/components/tabs/docs/codeUsage.js",
+  "exports": {
+    "code": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Tabs from \"@radui/ui/Tabs\";\r\nimport { useState } from \"react\";\r\n\r\nconst items = [\r\n  {\r\n    id: \"react\",\r\n    title: \"React\",\r\n    content: \"React is a JavaScript library for building user interfaces.\"\r\n  },\r\n  {\r\n    id: \"angular\",\r\n    title: \"Angular\",\r\n    content: \"Angular is a platform and framework for building single-page client applications using HTML and TypeScript.\"\r\n  },\r\n  {\r\n    id: \"vue\",\r\n    title: \"Vue\",\r\n    content: \"Vue.js is a progressive framework for building user interfaces.\"\r\n  }\r\n]\r\n\r\nconst TabsExample = () => {\r\n  const [activeTab, setActiveTab] = useState(items[0].id);\r\n  return  <div className=\"w-64 md:w-96\">\r\n      <Tabs.Root value={activeTab} onValueChange={setActiveTab}>\r\n        <Tabs.List>\r\n          {items.map((item) => (\r\n            <Tabs.Trigger key={item.id} value={item.id}>{item.title}</Tabs.Trigger>\r\n          ))}\r\n        </Tabs.List>\r\n        {items.map((item) => (\r\n          <Tabs.Content key={item.id} value={item.id}>{item.content}</Tabs.Content>\r\n        ))}\r\n      </Tabs.Root>\r\n    </div>\r\n}\r\n\r\nexport default TabsExample;"
+      },
+      "scss": {
+        "code": "/** TABS  */\r\n.rad-ui-tabs{\r\n    .rad-ui-tabs-list{\r\n        display: flex;\r\n        box-shadow: inset 0 -1px 0 0 var(--rad-ui-color-gray-500);\r\n\r\n\r\n        .rad-ui-tabs-trigger {\r\n            color: var(--rad-ui-color-accent-600);\r\n            font-family: inherit;\r\n            padding: 10px;\r\n            display: flex;\r\n            align-items: center;\r\n            height:42px;\r\n            font-size: 15px;\r\n            line-height: 1;\r\n            cursor: pointer;\r\n\r\n\r\n            &:focus-visible{\r\n                background-color: var(--rad-ui-color-accent-100);\r\n                outline:2px solid var(--rad-ui-color-blue-950);\r\n                outline-offset: 2px;\r\n                border-radius: 1px;\r\n            }\r\n\r\n            &.active{\r\n                color: var(--rad-ui-color-accent-950);\r\n                border-bottom:2px solid var(--rad-ui-color-accent-900);\r\n            }\r\n\r\n            &:hover{\r\n                color: var(--rad-ui-color-accent-900);\r\n            }\r\n        }\r\n    }\r\n\r\n    .rad-ui-tab-content{\r\n        padding:20px 0;\r\n        color : var(--rad-ui-color-gray-1000);\r\n    }\r\n    \r\n}\r\n\r\n\r\n\r\n"
+      }
+    },
+    "anatomy": {
+      "code": "import Tabs from \"@radui/ui/Tabs\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Tabs.Root>\r\n            <Tabs.List>\r\n                <Tabs.Trigger />\r\n            </Tabs.List>\r\n            <Tabs.Content />\r\n        </Tabs.Root>\r\n    )\r\n}"
+    },
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "The root component for the Tabs.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the TabRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "The custom class name for the TabRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the TabRoot."
+            },
+            "type": "ReactNode",
+            "required": true
+          },
+          {
+            "prop": {
+              "name": "value",
+              "info_tooltips": "The value of the TabRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "color",
+              "info_tooltips": "The color of the TabRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "defaultValue",
+              "info_tooltips": "The default value of the TabRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "onValueChange",
+              "info_tooltips": "The onValueChange of the TabRoot."
+            },
+            "type": "function",
+            "default": "--"
+          }
+        ]
+      },
+      "trigger": {
+        "name": "Trigger",
+        "description": "The trigger component for the Tabs. This component is used to toggle the visibility of the Tab.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the TabTrigger."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the TabTrigger."
+            },
+            "type": "ReactNode",
+            "required": true
+          },
+          {
+            "prop": {
+              "name": "disabled",
+              "info_tooltips": "Whether the TabTrigger is disabled."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "value",
+              "info_tooltips": "The value of the TabTrigger."
+            },
+            "type": "string",
+            "default": "--"
+          }
+        ]
+      },
+      "list": {
+        "name": "List",
+        "description": "The list component for the Tabs. This component is used to display the list of Tabs.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the TabsList."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the TabsList."
+            },
+            "type": "ReactNode"
+          }
+        ]
+      },
+      "content": {
+        "name": "Content",
+        "description": "The content component for the Tabs. This component is used to display the content of the Tabs.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the TabContent."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "value",
+              "info_tooltips": "The value of the TabContent."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the TabContent."
+            },
+            "type": "ReactNode",
+            "default": "--",
+            "required": true
+          }
+        ]
+      }
+    },
+    "default": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Tabs from \"@radui/ui/Tabs\";\r\nimport { useState } from \"react\";\r\n\r\nconst items = [\r\n  {\r\n    id: \"react\",\r\n    title: \"React\",\r\n    content: \"React is a JavaScript library for building user interfaces.\"\r\n  },\r\n  {\r\n    id: \"angular\",\r\n    title: \"Angular\",\r\n    content: \"Angular is a platform and framework for building single-page client applications using HTML and TypeScript.\"\r\n  },\r\n  {\r\n    id: \"vue\",\r\n    title: \"Vue\",\r\n    content: \"Vue.js is a progressive framework for building user interfaces.\"\r\n  }\r\n]\r\n\r\nconst TabsExample = () => {\r\n  const [activeTab, setActiveTab] = useState(items[0].id);\r\n  return  <div className=\"w-64 md:w-96\">\r\n      <Tabs.Root value={activeTab} onValueChange={setActiveTab}>\r\n        <Tabs.List>\r\n          {items.map((item) => (\r\n            <Tabs.Trigger key={item.id} value={item.id}>{item.title}</Tabs.Trigger>\r\n          ))}\r\n        </Tabs.List>\r\n        {items.map((item) => (\r\n          <Tabs.Content key={item.id} value={item.id}>{item.content}</Tabs.Content>\r\n        ))}\r\n      </Tabs.Root>\r\n    </div>\r\n}\r\n\r\nexport default TabsExample;"
+      },
+      "scss": {
+        "code": "/** TABS  */\r\n.rad-ui-tabs{\r\n    .rad-ui-tabs-list{\r\n        display: flex;\r\n        box-shadow: inset 0 -1px 0 0 var(--rad-ui-color-gray-500);\r\n\r\n\r\n        .rad-ui-tabs-trigger {\r\n            color: var(--rad-ui-color-accent-600);\r\n            font-family: inherit;\r\n            padding: 10px;\r\n            display: flex;\r\n            align-items: center;\r\n            height:42px;\r\n            font-size: 15px;\r\n            line-height: 1;\r\n            cursor: pointer;\r\n\r\n\r\n            &:focus-visible{\r\n                background-color: var(--rad-ui-color-accent-100);\r\n                outline:2px solid var(--rad-ui-color-blue-950);\r\n                outline-offset: 2px;\r\n                border-radius: 1px;\r\n            }\r\n\r\n            &.active{\r\n                color: var(--rad-ui-color-accent-950);\r\n                border-bottom:2px solid var(--rad-ui-color-accent-900);\r\n            }\r\n\r\n            &:hover{\r\n                color: var(--rad-ui-color-accent-900);\r\n            }\r\n        }\r\n    }\r\n\r\n    .rad-ui-tab-content{\r\n        padding:20px 0;\r\n        color : var(--rad-ui-color-gray-1000);\r\n    }\r\n    \r\n}\r\n\r\n\r\n\r\n"
+      }
+    }
+  },
+  "notes": []
+}

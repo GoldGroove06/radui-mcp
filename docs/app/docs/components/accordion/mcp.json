@@ -1,0 +1,242 @@
+{
+  "component": "accordion",
+  "codeUsagePath": "app/docs/components/accordion/docs/codeUsage.js",
+  "exports": {
+    "code": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Accordion from \"@radui/ui/Accordion\";\r\n\r\nconst items = [\r\n  {\r\n    id: \"react\",\r\n    title: \"React\",\r\n    content: \"React is a JavaScript library for building user interfaces.\"\r\n  },\r\n  {\r\n    id: \"angular\",\r\n    title: \"Angular\",\r\n    content: \"Angular is a platform and framework for building single-page client applications using HTML and TypeScript.\"\r\n  },\r\n  {\r\n    id: \"vue\",\r\n    title: \"Vue\",\r\n    content: \"Vue.js is a progressive framework for building user interfaces.\"\r\n  }\r\n]\r\n\r\nconst AccordionExample = () => {\r\n  \r\n\r\n  return (\r\n  <div className=\"w-64 md:w-96\">\r\n    <Accordion.Root>\r\n      {items.map((item) => (\r\n        <Accordion.Item key={item.id} value={item.id}>\r\n          <Accordion.Header>\r\n            <Accordion.Trigger>{item.title}</Accordion.Trigger>\r\n          </Accordion.Header>\r\n          <Accordion.Content>{item.content}</Accordion.Content>\r\n        </Accordion.Item>\r\n      ))}\r\n    </Accordion.Root>\r\n  </div>)\r\n}\r\n\r\nexport default AccordionExample;"
+      },
+      "scss": {
+        "code": ".rad-ui-accordion-root{\r\n    //  --------------------------------\r\n    //  --- Component Tokens -----\r\n    //  --------------------------------\r\n    \r\n    --rad-accordion-border-color: var(--rad-ui-color-gray-700);\r\n    --rad-accordion-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-text-color: var(--rad-ui-color-gray-1000);\r\n\r\n    // Trigger Tokens\r\n    --rad-accordion-trigger-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-trigger-text-color: var(--rad-ui-color-purple-950);\r\n\r\n    // Content Tokens\r\n    --rad-accordion-content-background-color: var(--rad-ui-color-gray-100);\r\n    --rad-accordion-content-text-color: var(--rad-ui-color-gray-950);\r\n\r\n    // Focus Tokens\r\n    --rad-accordion-focus-border-color: var(--rad-ui-color-purple-800);\r\n    --rad-accordion-focus-outline-offset: 1px;\r\n\r\n\r\n    width: 100%;\r\n    border: 1px solid var(--rad-accordion-border-color);\r\n    border-radius: 4px;\r\n\r\n    .rad-ui-accordion-item {\r\n        border-radius: 4px;\r\n\r\n        &[data-disabled]{\r\n            opacity: 0.3;\r\n            pointer-events: none;\r\n            cursor: not-allowed !important;\r\n        }\r\n        \r\n        background-color: var(--rad-accordion-background-color);\r\n\r\n        // not last child\r\n        &:not(:last-child){\r\n            border-bottom: 1px solid var(--rad-accordion-border-color);\r\n        }\r\n\r\n        // Focus state for the entire item (when trigger or content is focused)\r\n        &:focus-within {\r\n            outline: 3px solid var(--rad-accordion-focus-border-color);\r\n            outline-offset: var(--rad-accordion-focus-outline-offset);\r\n        }\r\n\r\n        .rad-ui-accordion-trigger{\r\n            border-radius: 4px;\r\n            width: 100%;\r\n            text-align: left;\r\n            padding:16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-trigger-text-color);\r\n            background-color: var(--rad-accordion-trigger-background-color);\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n\r\n        .rad-ui-accordion-content {\r\n            padding: 16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-content-text-color);\r\n            border-top: 1px solid var(--rad-accordion-border-color);\r\n            background-color: var(--rad-accordion-content-background-color);\r\n\r\n            &[data-state=\"open\"]{\r\n                height: auto;\r\n                border-bottom-left-radius: 4px;\r\n                border-bottom-right-radius: 4px;\r\n            }\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n    }\r\n}"
+      }
+    },
+    "anatomy": {
+      "code": "import Accordion from \"@radui/ui/Accordion\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Accordion.Root>\r\n            <Accordion.Item>\r\n                <Accordion.Header>\r\n                    <Accordion.Trigger />\r\n                </Accordion.Header>\r\n                <Accordion.Content />\r\n            </Accordion.Item>\r\n        </Accordion.Root>\r\n    )\r\n}"
+    },
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "The root component for the Accordion.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AccordionRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "openMultiple",
+              "info_tooltips": "Whether to allow multiple items to be open at once."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the Accordion."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "loop",
+              "info_tooltips": "Whether to loop through the Accordion items."
+            },
+            "type": "boolean",
+            "default": "true"
+          },
+          {
+            "prop": {
+              "name": "orientation",
+              "info_tooltips": "The orientation of the Accordion."
+            },
+            "type": "enum",
+            "enum_values": [
+              "horizontal",
+              "vertical"
+            ],
+            "default": "horizontal"
+          },
+          {
+            "prop": {
+              "name": "disableTabIndexing",
+              "info_tooltips": "Disables the roving tabindex behavior for keyboard navigation."
+            },
+            "type": "boolean",
+            "default": "true"
+          }
+        ]
+      },
+      "item": {
+        "name": "Item",
+        "description": "The item component for the Accordion.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AccordionItem."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the AccordionItem."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "disabled",
+              "info_tooltips": "Whether to disable the AccordionItem."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "value*",
+              "info_tooltips": "The value of the AccordionItem. This is used to identify the item in the Accordion."
+            },
+            "type": "string",
+            "default": "--"
+          }
+        ]
+      },
+      "trigger": {
+        "name": "Trigger",
+        "description": "The trigger component for the Accordion. This component is used to toggle the visibility of the AccordionItem.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the AccordionTrigger."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the AccordionTrigger."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      }
+    },
+    "keyboardShortcuts": {
+      "columns": [
+        {
+          "name": "Shortcut",
+          "id": "shortcut"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "shortcut": "<Kbd>Space</Kbd>",
+          "description": "<Text>\r\n              When focus is on an Accordion.Trigger of a collapsed section, expands the section.\r\n            </Text>",
+          "id": "space"
+        },
+        {
+          "shortcut": "<Kbd>Enter</Kbd>",
+          "description": "<Text>\r\n            When focus is on an Accordion.Trigger of an expanded section, collapses the section.\r\n          </Text>",
+          "id": "enter"
+        },
+        {
+          "shortcut": "<Kbd>Tab</Kbd>",
+          "description": "<Text>\r\n            When focus is on an Accordion.Trigger of a collapsed section, focuses the next Accordion.Trigger.\r\n          </Text>",
+          "id": "tab"
+        },
+        {
+          "shortcut": "<Kbd>Shift + Tab</Kbd>",
+          "description": "<Text>\r\n            When focus is on an Accordion.Trigger of an expanded section, focuses the previous Accordion.Trigger.\r\n          </Text>",
+          "id": "shift-tab"
+        },
+        {
+          "shortcut": "<Kbd>ArrowDown</Kbd>",
+          "description": "<Text>\r\n            When focus is on an Accordion.Trigger of a collapsed section, focuses the next Accordion.Trigger.\r\n          </Text>",
+          "id": "arrow-down"
+        },
+        {
+          "shortcut": "<Kbd>ArrowUp</Kbd>",
+          "description": "<Text>\r\n            When focus is on an Accordion.Trigger of an expanded section, focuses the previous Accordion.Trigger.\r\n          </Text>",
+          "id": "arrow-up"
+        },
+        {
+          "shortcut": "<Kbd>Home</Kbd>",
+          "description": "<Text>\r\n            When focus is on an Accordion.Trigger, focuses the first Accordion.Trigger. [TODO]\r\n          </Text>",
+          "id": "home"
+        },
+        {
+          "shortcut": "<Kbd>End</Kbd>",
+          "description": "<Text>\r\n            When focus is on an Accordion.Trigger, focuses the last Accordion.Trigger. [TODO]\r\n          </Text>",
+          "id": "end"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Accordion from \"@radui/ui/Accordion\";\r\n\r\nconst items = [\r\n  {\r\n    id: \"react\",\r\n    title: \"React\",\r\n    content: \"React is a JavaScript library for building user interfaces.\"\r\n  },\r\n  {\r\n    id: \"angular\",\r\n    title: \"Angular\",\r\n    content: \"Angular is a platform and framework for building single-page client applications using HTML and TypeScript.\"\r\n  },\r\n  {\r\n    id: \"vue\",\r\n    title: \"Vue\",\r\n    content: \"Vue.js is a progressive framework for building user interfaces.\"\r\n  }\r\n]\r\n\r\nconst AccordionExample = () => {\r\n  \r\n\r\n  return (\r\n  <div className=\"w-64 md:w-96\">\r\n    <Accordion.Root>\r\n      {items.map((item) => (\r\n        <Accordion.Item key={item.id} value={item.id}>\r\n          <Accordion.Header>\r\n            <Accordion.Trigger>{item.title}</Accordion.Trigger>\r\n          </Accordion.Header>\r\n          <Accordion.Content>{item.content}</Accordion.Content>\r\n        </Accordion.Item>\r\n      ))}\r\n    </Accordion.Root>\r\n  </div>)\r\n}\r\n\r\nexport default AccordionExample;"
+      },
+      "scss": {
+        "code": ".rad-ui-accordion-root{\r\n    //  --------------------------------\r\n    //  --- Component Tokens -----\r\n    //  --------------------------------\r\n    \r\n    --rad-accordion-border-color: var(--rad-ui-color-gray-700);\r\n    --rad-accordion-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-text-color: var(--rad-ui-color-gray-1000);\r\n\r\n    // Trigger Tokens\r\n    --rad-accordion-trigger-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-trigger-text-color: var(--rad-ui-color-purple-950);\r\n\r\n    // Content Tokens\r\n    --rad-accordion-content-background-color: var(--rad-ui-color-gray-100);\r\n    --rad-accordion-content-text-color: var(--rad-ui-color-gray-950);\r\n\r\n    // Focus Tokens\r\n    --rad-accordion-focus-border-color: var(--rad-ui-color-purple-800);\r\n    --rad-accordion-focus-outline-offset: 1px;\r\n\r\n\r\n    width: 100%;\r\n    border: 1px solid var(--rad-accordion-border-color);\r\n    border-radius: 4px;\r\n\r\n    .rad-ui-accordion-item {\r\n        border-radius: 4px;\r\n\r\n        &[data-disabled]{\r\n            opacity: 0.3;\r\n            pointer-events: none;\r\n            cursor: not-allowed !important;\r\n        }\r\n        \r\n        background-color: var(--rad-accordion-background-color);\r\n\r\n        // not last child\r\n        &:not(:last-child){\r\n            border-bottom: 1px solid var(--rad-accordion-border-color);\r\n        }\r\n\r\n        // Focus state for the entire item (when trigger or content is focused)\r\n        &:focus-within {\r\n            outline: 3px solid var(--rad-accordion-focus-border-color);\r\n            outline-offset: var(--rad-accordion-focus-outline-offset);\r\n        }\r\n\r\n        .rad-ui-accordion-trigger{\r\n            border-radius: 4px;\r\n            width: 100%;\r\n            text-align: left;\r\n            padding:16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-trigger-text-color);\r\n            background-color: var(--rad-accordion-trigger-background-color);\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n\r\n        .rad-ui-accordion-content {\r\n            padding: 16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-content-text-color);\r\n            border-top: 1px solid var(--rad-accordion-border-color);\r\n            background-color: var(--rad-accordion-content-background-color);\r\n\r\n            &[data-state=\"open\"]{\r\n                height: auto;\r\n                border-bottom-left-radius: 4px;\r\n                border-bottom-right-radius: 4px;\r\n            }\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n    }\r\n}"
+      }
+    }
+  },
+  "notes": []
+}

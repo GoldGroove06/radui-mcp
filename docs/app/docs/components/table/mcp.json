@@ -1,0 +1,233 @@
+{
+  "component": "table",
+  "codeUsagePath": "app/docs/components/table/docs/codeUsage.js",
+  "exports": {
+    "code": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Table from \"@radui/ui/Table\";\r\n\r\nconst columns = [\r\n  { name: 'Name', id: 'name' },\r\n  { name: 'Role', id: 'role' },\r\n  { name: 'Ability', id: 'ability' },\r\n  { name: 'Ship', id: 'ship' },\r\n  { name: 'Status', id: 'status' }\r\n];\r\n\r\nconst data = [\r\n  { \r\n    id: '1', \r\n    name: 'Neo (Thomas Anderson)', \r\n    role: 'The One', \r\n    ability: 'Code manipulation, Flight', \r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '2', \r\n    name: 'Trinity', \r\n    role: 'First Mate', \r\n    ability: 'Hacking, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '3', \r\n    name: 'Morpheus', \r\n    role: 'Captain', \r\n    ability: 'Leadership, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '4', \r\n    name: 'Agent Smith', \r\n    role: 'Agent', \r\n    ability: 'Replication, Possession',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '5', \r\n    name: 'Cypher', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Traitor' \r\n  },\r\n  { \r\n    id: '6', \r\n    name: 'Oracle', \r\n    role: 'Guide', \r\n    ability: 'Foresight',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '7', \r\n    name: 'Niobe', \r\n    role: 'Captain', \r\n    ability: 'Piloting, Combat',\r\n    ship: 'Logos',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '8', \r\n    name: 'Tank', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Born Free' \r\n  }\r\n];\r\n\r\nconst TableExample = () => {\r\n  return (\r\n  <div className=\"w-full max-w-4xl\">\r\n     <Table.Root>\r\n            <Table.Head>\r\n                <Table.Row>\r\n                    {columns.map((column) => (\r\n                        <Table.ColumnCellHeader key={column.id}>\r\n                            {column.name}\r\n                        </Table.ColumnCellHeader>\r\n                    ))}\r\n                </Table.Row>\r\n            </Table.Head>\r\n            <Table.Body>\r\n                {data.map((row) => (\r\n                    <Table.Row key={row.id}>\r\n                        {columns.map((column) => (\r\n                            <Table.Cell key={`${row.id}-${column.id}`}>\r\n                                {row[column.id]}\r\n                            </Table.Cell>\r\n                        ))}\r\n                    </Table.Row>\r\n                ))}\r\n            </Table.Body>\r\n        </Table.Root>\r\n  </div>)\r\n}\r\n\r\nexport default TableExample;"
+      },
+      "scss": {
+        "code": ".rad-ui-table-wrapper{\r\n    border: 1px solid var(--rad-ui-color-accent-500);\r\n    border-radius: 12px;\r\n    overflow: hidden;\r\n\r\n    .rad-ui-table{\r\n        width: 100%;\r\n        text-align: left;\r\n        vertical-align: top;\r\n        border-radius: calc(10px);\r\n        border-spacing: 0;\r\n        box-sizing: border-box;\r\n        color: var(--rad-ui-color-gray-1000);\r\n\r\n        .header{\r\n            padding: 12px;\r\n            vertical-align: inherit;\r\n            font-weight: 700;\r\n            font-size:14px;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-500);\r\n\r\n            .cell-header{\r\n                padding: 12px;\r\n                vertical-align: inherit;\r\n                font-weight: 500;\r\n                background-color: var(--rad-ui-color-accent-200);\r\n            }\r\n        }\r\n    \r\n        .row{\r\n            vertical-align: inherit;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-300);\r\n            background-color: var(--rad-ui-color-accent-50);\r\n\r\n            &:last-child{\r\n                border-bottom: none;\r\n            }\r\n        }\r\n    \r\n        .cell{\r\n            padding: 0.75rem 1rem;\r\n            vertical-align: inherit;\r\n            color: var(--rad-ui-color-gray-1000);\r\n            font-weight: 300;\r\n            font-size: 14px;\r\n        }\r\n    }\r\n\r\n}\r\n\r\n"
+      }
+    },
+    "anatomy": {
+      "code": "import Table from \"@radui/ui/Table\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Table.Root>\r\n            <Table.Head>\r\n                <Table.Row>\r\n                    <Table.ColumnHeader/>\r\n                </Table.Row>\r\n            </Table.Head>\r\n            <Table.Body>\r\n                <Table.Row>\r\n                    <Table.Cell/>\r\n                </Table.Row>\r\n            </Table.Body>\r\n        </Table.Root>\r\n    )\r\n}"
+    },
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "The root component for the Table.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the TableRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the Root."
+            }
+          }
+        ]
+      },
+      "head": {
+        "name": "Head",
+        "description": "The head component for the Table.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the TableHead."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the Head."
+            }
+          }
+        ]
+      },
+      "body": {
+        "name": "Body",
+        "description": "The body component for the Table.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the Body."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the Body."
+            }
+          }
+        ]
+      },
+      "row": {
+        "name": "Row",
+        "description": "The row component for the Table.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the TableRow."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the Row."
+            }
+          }
+        ]
+      },
+      "column_header": {
+        "name": "ColumnHeader",
+        "description": "The column header component for the Table.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the ColumnHeader."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the ColumnHeader."
+            }
+          }
+        ]
+      },
+      "cell": {
+        "name": "Cell",
+        "description": "The cell component for the Table.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the Cell."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the Cell."
+            },
+            "type": "ReactNode"
+          }
+        ]
+      }
+    },
+    "default": {
+      "javascript": {
+        "code": "\"use client\"\r\nimport Table from \"@radui/ui/Table\";\r\n\r\nconst columns = [\r\n  { name: 'Name', id: 'name' },\r\n  { name: 'Role', id: 'role' },\r\n  { name: 'Ability', id: 'ability' },\r\n  { name: 'Ship', id: 'ship' },\r\n  { name: 'Status', id: 'status' }\r\n];\r\n\r\nconst data = [\r\n  { \r\n    id: '1', \r\n    name: 'Neo (Thomas Anderson)', \r\n    role: 'The One', \r\n    ability: 'Code manipulation, Flight', \r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '2', \r\n    name: 'Trinity', \r\n    role: 'First Mate', \r\n    ability: 'Hacking, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '3', \r\n    name: 'Morpheus', \r\n    role: 'Captain', \r\n    ability: 'Leadership, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '4', \r\n    name: 'Agent Smith', \r\n    role: 'Agent', \r\n    ability: 'Replication, Possession',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '5', \r\n    name: 'Cypher', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Traitor' \r\n  },\r\n  { \r\n    id: '6', \r\n    name: 'Oracle', \r\n    role: 'Guide', \r\n    ability: 'Foresight',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '7', \r\n    name: 'Niobe', \r\n    role: 'Captain', \r\n    ability: 'Piloting, Combat',\r\n    ship: 'Logos',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '8', \r\n    name: 'Tank', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Born Free' \r\n  }\r\n];\r\n\r\nconst TableExample = () => {\r\n  return (\r\n  <div className=\"w-full max-w-4xl\">\r\n     <Table.Root>\r\n            <Table.Head>\r\n                <Table.Row>\r\n                    {columns.map((column) => (\r\n                        <Table.ColumnCellHeader key={column.id}>\r\n                            {column.name}\r\n                        </Table.ColumnCellHeader>\r\n                    ))}\r\n                </Table.Row>\r\n            </Table.Head>\r\n            <Table.Body>\r\n                {data.map((row) => (\r\n                    <Table.Row key={row.id}>\r\n                        {columns.map((column) => (\r\n                            <Table.Cell key={`${row.id}-${column.id}`}>\r\n                                {row[column.id]}\r\n                            </Table.Cell>\r\n                        ))}\r\n                    </Table.Row>\r\n                ))}\r\n            </Table.Body>\r\n        </Table.Root>\r\n  </div>)\r\n}\r\n\r\nexport default TableExample;"
+      },
+      "scss": {
+        "code": ".rad-ui-table-wrapper{\r\n    border: 1px solid var(--rad-ui-color-accent-500);\r\n    border-radius: 12px;\r\n    overflow: hidden;\r\n\r\n    .rad-ui-table{\r\n        width: 100%;\r\n        text-align: left;\r\n        vertical-align: top;\r\n        border-radius: calc(10px);\r\n        border-spacing: 0;\r\n        box-sizing: border-box;\r\n        color: var(--rad-ui-color-gray-1000);\r\n\r\n        .header{\r\n            padding: 12px;\r\n            vertical-align: inherit;\r\n            font-weight: 700;\r\n            font-size:14px;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-500);\r\n\r\n            .cell-header{\r\n                padding: 12px;\r\n                vertical-align: inherit;\r\n                font-weight: 500;\r\n                background-color: var(--rad-ui-color-accent-200);\r\n            }\r\n        }\r\n    \r\n        .row{\r\n            vertical-align: inherit;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-300);\r\n            background-color: var(--rad-ui-color-accent-50);\r\n\r\n            &:last-child{\r\n                border-bottom: none;\r\n            }\r\n        }\r\n    \r\n        .cell{\r\n            padding: 0.75rem 1rem;\r\n            vertical-align: inherit;\r\n            color: var(--rad-ui-color-gray-1000);\r\n            font-weight: 300;\r\n            font-size: 14px;\r\n        }\r\n    }\r\n\r\n}\r\n\r\n"
+      }
+    }
+  },
+  "notes": []
+}

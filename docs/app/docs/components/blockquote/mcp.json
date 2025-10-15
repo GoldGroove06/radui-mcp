@@ -1,0 +1,117 @@
+{
+  "component": "blockquote",
+  "codeUsagePath": "app/docs/components/blockquote/docs/codeUsage.js",
+  "exports": {
+    "api_documentation": {
+      "blockquote": {
+        "name": "BlockQuote",
+        "description": "A component used to highlight and distinguish quoted content from the surrounding text, often used for testimonials, citations, or emphasis.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The content to be displayed inside the blockquote."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "Additional CSS class names to apply to the blockquote."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "Custom root class name to override default styling."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "variant",
+              "info_tooltips": "Style variant of the blockquote."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "size",
+              "info_tooltips": "Size variant of the blockquote (small, medium, large, x-large)."
+            },
+            "type": "string",
+            "default": "''"
+          },
+          {
+            "prop": {
+              "name": "color",
+              "info_tooltips": "Color theme of the blockquote."
+            },
+            "type": "string",
+            "default": "''"
+          }
+        ]
+      }
+    },
+    "features": [
+      "Multiple size options: small, medium, large, x-large",
+      "Customizable with different color themes",
+      "Clean and simple styling for emphasized quotes",
+      "Follows typography best practices",
+      "Perfect for testimonials and citations"
+    ],
+    "BlockQuoteTable": {
+      "columns": [
+        {
+          "name": "Prop",
+          "id": "prop"
+        },
+        {
+          "name": "Type",
+          "id": "type"
+        },
+        {
+          "name": "Default",
+          "id": "default"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "prop": "color",
+          "type": "string",
+          "default": "null",
+          "description": "Accent Color of the quote",
+          "id": "color"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {},
+      "scss": {}
+    }
+  },
+  "notes": []
+}

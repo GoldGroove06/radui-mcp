@@ -1,2 +1,4 @@
 .gitgnore
 package-lock.json
+docs
+styles

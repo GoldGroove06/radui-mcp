@@ -1,0 +1,58 @@
+{
+  "component": "badge",
+  "codeUsagePath": "app/docs/components/badge/docs/codeUsage.js",
+  "exports": {
+    "BadgeTable": {
+      "columns": [
+        {
+          "name": "Prop",
+          "id": "prop"
+        },
+        {
+          "name": "Type",
+          "id": "type"
+        },
+        {
+          "name": "Default",
+          "id": "default"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "prop": "color",
+          "type": "string",
+          "default": "null",
+          "description": "Accent color of the component",
+          "id": "color"
+        },
+        {
+          "prop": "size",
+          "type": "string",
+          "default": "null",
+          "description": "Size of the component",
+          "id": "size"
+        },
+        {
+          "prop": "variant",
+          "type": "string",
+          "default": "null",
+          "description": "Variant of the component",
+          "id": "variant"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {
+        "code": "import Badge from \"@radui/ui/Badge\"\n\nconst BadgeExample = () => (\n    <div>\n        <Badge>Badge</Badge>\n    </div>\n)"
+      },
+      "scss": {
+        "code": "/** Badge */\n.rad-ui-badge {\n    background-color: var(--rad-ui-color-accent-300);\n    color: var(--rad-ui-color-accent-950);\n    padding:4px 8px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-weight: 600;\n    border-radius: 4px;\n}"
+      }
+    }
+  },
+  "notes": []
+}

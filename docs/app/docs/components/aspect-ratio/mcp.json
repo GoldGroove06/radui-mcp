@@ -1,0 +1,41 @@
+{
+  "component": "aspect-ratio",
+  "codeUsagePath": "app/docs/components/aspect-ratio/docs/codeUsage.js",
+  "exports": {
+    "AspectRatioTable": {
+      "columns": [
+        {
+          "name": "Prop",
+          "id": "prop"
+        },
+        {
+          "name": "Type",
+          "id": "type"
+        },
+        {
+          "name": "Default",
+          "id": "default"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "prop": "ratio",
+          "type": "string",
+          "default": "1",
+          "description": "Used to set desired ratio",
+          "id": "ratio"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {
+        "code": "import AspectRatio from \"@radui/ui/AspectRatio\"\n\nconst AspectRatioExample = () => (\n    <AspectRatio ratio='16/9'>\n        <img\n        style={{ width: '100%', height: '100%', objectFit: 'cover' }}\n        className=\"Image\"\n        src=\"https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg\"\n        alt=\"Landscape photograph\"\n            />\n    </AspectRatio>\n)"
+      }
+    }
+  },
+  "notes": []
+}

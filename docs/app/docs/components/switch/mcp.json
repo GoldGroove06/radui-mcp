@@ -1,0 +1,114 @@
+{
+  "component": "switch",
+  "codeUsagePath": "app/docs/components/switch/docs/codeUsage.js",
+  "exports": {
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "Root component for the Switch component.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the component."
+            },
+            "type": "React.ReactNode",
+            "default": "null"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "Custom root class name to override default styling."
+            },
+            "type": "string",
+            "default": "''"
+          }
+        ]
+      },
+      "thumb": {
+        "name": "Thumb",
+        "description": "Thumb component for the Switch component.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "If true, the component will render its children as a child of the component."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "customThumbClass",
+              "info_tooltips": "Custom thumb class name to override default styling."
+            },
+            "type": "string",
+            "default": "''"
+          }
+        ]
+      }
+    },
+    "SwitchTable": {
+      "columns": [
+        {
+          "name": "Prop",
+          "id": "prop"
+        },
+        {
+          "name": "Type",
+          "id": "type"
+        },
+        {
+          "name": "Default",
+          "id": "default"
+        },
+        {
+          "name": "Description",
+          "id": "description"
+        }
+      ],
+      "data": [
+        {
+          "prop": "color",
+          "type": "string",
+          "default": "null",
+          "description": "Accent Color of the switch",
+          "id": "color"
+        }
+      ]
+    },
+    "default": {
+      "javascript": {},
+      "scss": {}
+    }
+  },
+  "notes": []
+}

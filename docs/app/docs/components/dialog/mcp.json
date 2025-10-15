@@ -1,0 +1,322 @@
+{
+  "component": "dialog",
+  "codeUsagePath": "app/docs/components/dialog/docs/codeUsage.js",
+  "exports": {
+    "code": {
+      "javascript": {
+        "code": "\"use client\"\r\n\r\nimport Dialog from \"@radui/ui/Dialog\";\r\n\r\nconst DialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <Dialog.Root>\r\n        <Dialog.Trigger>\r\n          Open Dialog\r\n        </Dialog.Trigger>\r\n        <Dialog.Portal>\r\n          <Dialog.Overlay />\r\n          <Dialog.Content>\r\n            <Dialog.Title>\r\n              This message will self destruct in 10 seconds\r\n            </Dialog.Title>\r\n            <Dialog.Description>\r\n              Just kidding, it will not self destruct.\r\n            </Dialog.Description>\r\n            <Dialog.Close>\r\n              <CloseIcon />\r\n            </Dialog.Close>\r\n          </Dialog.Content>\r\n        </Dialog.Portal>\r\n      </Dialog.Root>\r\n    </div>)\r\n}\r\n\r\nconst CloseIcon = ()=>{\r\n  return <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z\" fill=\"currentColor\" fillRule=\"evenodd\" clipRule=\"evenodd\"></path></svg>\r\n}\r\n\r\nexport default DialogExample;"
+      },
+      "scss": {
+        "code": "@use 'button';\r\n\r\n.rad-ui-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n}\r\n\r\n.rad-ui-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n}\r\n\r\n.rad-ui-dialog-content {\r\n  position: relative;\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-500);\r\n\r\n  .rad-ui-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n  .rad-ui-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n\r\n  .rad-ui-dialog-close {\r\n    position: absolute;\r\n    right: 12px;\r\n    top: 12px;\r\n    border-radius: 50%;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-500);\r\n    width: 25px;\r\n    height: 25px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-600);\r\n    }\r\n  }\r\n}"
+      }
+    },
+    "anatomy": {
+      "code": "import Dialog from \"@radui/ui/Dialog\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Dialog.Root>\r\n            <Dialog.Trigger/>\r\n            <Dialog.Portal>\r\n                <Dialog.Overlay/>\r\n                <Dialog.Content>\r\n                    <Dialog.Title/>\r\n                    <Dialog.Description/>\r\n                    <Dialog.Close/>\r\n                </Dialog.Content>\r\n            </Dialog.Portal>\r\n        </Dialog.Root>\r\n    )\r\n}"
+    },
+    "api_documentation": {
+      "root": {
+        "name": "Root",
+        "description": "The root component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the DialogRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "customRootClass",
+              "info_tooltips": "The custom class name for the DialogRoot."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "open",
+              "info_tooltips": "The boolean to control the open state of the DialogRoot."
+            },
+            "type": "boolean",
+            "default": "false"
+          },
+          {
+            "prop": {
+              "name": "onOpenChange",
+              "info_tooltips": "The function to handle the open change of the DialogRoot."
+            },
+            "type": "function",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "onClickOutside",
+              "info_tooltips": "The function to handle the click outside of the DialogRoot."
+            },
+            "type": "function",
+            "default": "--"
+          }
+        ]
+      },
+      "trigger": {
+        "name": "Trigger",
+        "description": "The trigger component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the DialogTrigger."
+            },
+            "type": "string",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the DialogTrigger."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      },
+      "title": {
+        "name": "Title",
+        "description": "The title component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the DialogTitle."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the DialogTitle."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "description": {
+        "name": "Description",
+        "description": "The description component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the DialogDescription."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the DialogDescription."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "portal": {
+        "name": "Portal",
+        "description": "The portal component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the DialogPortal."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "overlay": {
+        "name": "Overlay",
+        "description": "The overlay component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the DialogOverlay."
+            }
+          }
+        ]
+      },
+      "content": {
+        "name": "Content",
+        "description": "The content component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the DialogContent."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the DialogContent."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          }
+        ]
+      },
+      "close": {
+        "name": "Close",
+        "description": "The close component for the Dialog.",
+        "columns": [
+          {
+            "name": "Prop",
+            "id": "prop"
+          },
+          {
+            "name": "Type",
+            "id": "type"
+          },
+          {
+            "name": "Default",
+            "id": "default"
+          }
+        ],
+        "data": [
+          {
+            "prop": {
+              "name": "className",
+              "info_tooltips": "The class name for the DialogClose."
+            }
+          },
+          {
+            "prop": {
+              "name": "children",
+              "info_tooltips": "The children of the DialogClose."
+            },
+            "type": "ReactNode",
+            "default": "--"
+          },
+          {
+            "prop": {
+              "name": "asChild",
+              "info_tooltips": "Whether to use the child component as the DialogClose."
+            },
+            "type": "boolean",
+            "default": "false"
+          }
+        ]
+      }
+    },
+    "default": {
+      "javascript": {
+        "code": "\"use client\"\r\n\r\nimport Dialog from \"@radui/ui/Dialog\";\r\n\r\nconst DialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <Dialog.Root>\r\n        <Dialog.Trigger>\r\n          Open Dialog\r\n        </Dialog.Trigger>\r\n        <Dialog.Portal>\r\n          <Dialog.Overlay />\r\n          <Dialog.Content>\r\n            <Dialog.Title>\r\n              This message will self destruct in 10 seconds\r\n            </Dialog.Title>\r\n            <Dialog.Description>\r\n              Just kidding, it will not self destruct.\r\n            </Dialog.Description>\r\n            <Dialog.Close>\r\n              <CloseIcon />\r\n            </Dialog.Close>\r\n          </Dialog.Content>\r\n        </Dialog.Portal>\r\n      </Dialog.Root>\r\n    </div>)\r\n}\r\n\r\nconst CloseIcon = ()=>{\r\n  return <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z\" fill=\"currentColor\" fillRule=\"evenodd\" clipRule=\"evenodd\"></path></svg>\r\n}\r\n\r\nexport default DialogExample;"
+      },
+      "scss": {
+        "code": "@use 'button';\r\n\r\n.rad-ui-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n}\r\n\r\n.rad-ui-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n}\r\n\r\n.rad-ui-dialog-content {\r\n  position: relative;\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-500);\r\n\r\n  .rad-ui-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n  .rad-ui-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n\r\n  .rad-ui-dialog-close {\r\n    position: absolute;\r\n    right: 12px;\r\n    top: 12px;\r\n    border-radius: 50%;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-500);\r\n    width: 25px;\r\n    height: 25px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-600);\r\n    }\r\n  }\r\n}"
+      }
+    }
+  },
+  "notes": []
+}
