@@ -16,7 +16,7 @@ const server = new McpServer({
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const REMOTE_MCP_JSON_URL = process.env.MCP_JSON_URL?.trim() || null;
+const REMOTE_MCP_JSON_URL = "https://goldgroove06.github.io/radui-mcp/mcp.json";
 const LOCAL_MCP_JSON_PATH = process.env.MCP_JSON_PATH
   ? path.resolve(process.cwd(), process.env.MCP_JSON_PATH)
   : path.join(__dirname, "mcp.json");
