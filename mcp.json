@@ -1,0 +1,4628 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-04-13T10:41:09.738Z",
+  "installation": {
+    "package": "@radui/ui",
+    "title": "Installation",
+    "methods": [
+      {
+        "manager": "npm",
+        "command": "npm install @radui/ui --save"
+      }
+    ],
+    "content": "# Installation\r\n\r\nGetting started with Rad UI is simple and quick! Whether you're integrating it into an existing project or starting fresh, you'll be up and running in no time. Follow the instructions below to install Rad UI using your preferred package manager.\r\n\r\n## Install via npm\r\n\r\nIf you use npm, run the following command to install Rad UI:\r\n\r\n```bash\r\nnpm install @radui/ui --save",
+    "notes": []
+  },
+  "componentCount": 26,
+  "components": [
+    {
+      "component": "accordion",
+      "exports": {
+        "code": {
+          "javascript": {
+            "code": "\"use client\"\r\n\r\nimport type { ComponentProps } from \"react\"\r\nimport Accordion from \"@radui/ui/Accordion\"\r\nimport { ChevronDown } from \"lucide-react\"\r\n\r\n// Mirrors `WithAnimation` in `src/components/ui/Accordion/stories/Accordion.stories.tsx`\r\nconst items = [\r\n  {\r\n    title: \"The Matrix (1999)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: A hacker discovers the true nature of reality and his role in the war against its controllers.</li>\r\n          <li>Key Characters: Neo, Morpheus, Trinity, Agent Smith</li>\r\n          <li>Memorable Quote: &quot;There is no spoon.&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  },\r\n  {\r\n    title: \"The Dark Knight (2008)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: Batman faces his greatest challenge yet as the Joker wreaks havoc on Gotham City.</li>\r\n          <li>Key Characters: Batman, Joker, Harvey Dent, Alfred</li>\r\n          <li>Memorable Quote: &quot;Why so serious?&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  },\r\n  {\r\n    title: \"Inception (2010)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: A thief who enters people&apos;s dreams to steal their secrets must plant an idea in someone&apos;s mind.</li>\r\n          <li>Key Characters: Cobb, Ariadne, Mal, Saito</li>\r\n          <li>Memorable Quote: &quot;You mustn&apos;t be afraid to dream a little bigger, darling.&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  },\r\n  {\r\n    title: \"The Shawshank Redemption (1994)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: A banker is wrongly convicted</li>\r\n          <li>Key Characters: Andy Dufresne, Red, Warden Norton, Tommy</li>\r\n          <li>Memorable Quote: &quot;Get busy living or get busy dying.&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  }\r\n]\r\n\r\ntype AccordionExampleProps = ComponentProps<typeof Accordion.Root>\r\n\r\nconst AccordionExample = ({ ...args }: AccordionExampleProps) => {\r\n  return (\r\n    <div className=\"mx-auto mt-10 w-full max-w-[600px]\">\r\n      <Accordion.Root collapsible transitionDuration={200} {...args}>\r\n        {items.map((item, index) => (\r\n          <Accordion.Item key={index} value={index}>\r\n            <Accordion.Header>\r\n              <Accordion.Trigger>\r\n                {item.title}\r\n                <ChevronDown />\r\n              </Accordion.Trigger>\r\n            </Accordion.Header>\r\n            <Accordion.Content>{item.content}</Accordion.Content>\r\n          </Accordion.Item>\r\n        ))}\r\n      </Accordion.Root>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default AccordionExample\r\n"
+          },
+          "scss": {
+            "code": ".rad-ui-accordion-root{\r\n    //  --------------------------------\r\n    //  --- Component Tokens -----\r\n    //  --------------------------------\r\n    \r\n    --rad-accordion-border-color: var(--rad-ui-color-gray-700);\r\n    --rad-accordion-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-text-color: var(--rad-ui-color-gray-1000);\r\n\r\n    // Trigger Tokens\r\n    --rad-accordion-trigger-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-trigger-text-color: var(--rad-ui-color-purple-950);\r\n\r\n    // Content Tokens\r\n    --rad-accordion-content-background-color: var(--rad-ui-color-gray-100);\r\n    --rad-accordion-content-text-color: var(--rad-ui-color-gray-950);\r\n\r\n    // Focus Tokens\r\n    --rad-accordion-focus-border-color: var(--rad-ui-color-purple-800);\r\n    --rad-accordion-focus-outline-offset: 1px;\r\n\r\n\r\n    width: 100%;\r\n    border: 1px solid var(--rad-accordion-border-color);\r\n    border-radius: 4px;\r\n\r\n    .rad-ui-accordion-item {\r\n        border-radius: 4px;\r\n\r\n        &[data-disabled]{\r\n            opacity: 0.3;\r\n            pointer-events: none;\r\n            cursor: not-allowed !important;\r\n        }\r\n        \r\n        background-color: var(--rad-accordion-background-color);\r\n\r\n        // not last child\r\n        &:not(:last-child){\r\n            border-bottom: 1px solid var(--rad-accordion-border-color);\r\n        }\r\n\r\n        // Focus state for the entire item (when trigger or content is focused)\r\n        &:focus-within {\r\n            outline: 3px solid var(--rad-accordion-focus-border-color);\r\n            outline-offset: var(--rad-accordion-focus-outline-offset);\r\n        }\r\n\r\n        .rad-ui-accordion-trigger{\r\n            border-radius: 4px;\r\n            width: 100%;\r\n            text-align: left;\r\n            padding:16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-trigger-text-color);\r\n            background-color: var(--rad-accordion-trigger-background-color);\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n\r\n        .rad-ui-accordion-content {\r\n            padding: 16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-content-text-color);\r\n            border-top: 1px solid var(--rad-accordion-border-color);\r\n            background-color: var(--rad-accordion-content-background-color);\r\n\r\n            &[data-state=\"open\"]{\r\n                height: auto;\r\n                border-bottom-left-radius: 4px;\r\n                border-bottom-right-radius: 4px;\r\n            }\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n    }\r\n}"
+          }
+        },
+        "anatomy": {
+          "code": "import Accordion from \"@radui/ui/Accordion\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Accordion.Root>\r\n            <Accordion.Item>\r\n                <Accordion.Header>\r\n                    <Accordion.Trigger />\r\n                </Accordion.Header>\r\n                <Accordion.Content />\r\n            </Accordion.Item>\r\n        </Accordion.Root>\r\n    )\r\n}"
+        },
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the Accordion.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AccordionRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the Accordion."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "loop",
+                  "info_tooltips": "Whether to loop through the Accordion items."
+                },
+                "type": "boolean",
+                "default": "true"
+              },
+              {
+                "prop": {
+                  "name": "orientation",
+                  "info_tooltips": "The orientation of the Accordion."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "horizontal",
+                  "vertical"
+                ],
+                "default": "vertical"
+              },
+              {
+                "prop": {
+                  "name": "disableTabIndexing",
+                  "info_tooltips": "Disables the roving tabindex behavior for keyboard navigation."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "disabled",
+                  "info_tooltips": "Disables all accordion items."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "transitionDuration",
+                  "info_tooltips": "Transition duration in milliseconds for item open and close animations."
+                },
+                "type": "number",
+                "default": "0"
+              },
+              {
+                "prop": {
+                  "name": "transitionTimingFunction",
+                  "info_tooltips": "CSS timing function used by accordion transitions."
+                },
+                "type": "string",
+                "default": "linear"
+              },
+              {
+                "prop": {
+                  "name": "openMultiple",
+                  "info_tooltips": "Deprecated alias for allowing multiple items to be open at once. Prefer type='multiple'."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "type",
+                  "info_tooltips": "Selection mode for the accordion."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "single",
+                  "multiple"
+                ],
+                "default": "single"
+              },
+              {
+                "prop": {
+                  "name": "collapsible",
+                  "info_tooltips": "When type is single, allows the currently open item to be closed."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "Controlled open item values."
+                },
+                "type": "(string | number)[]",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "defaultValue",
+                  "info_tooltips": "Initial open item values for uncontrolled usage."
+                },
+                "type": "(string | number)[]",
+                "default": "[]"
+              },
+              {
+                "prop": {
+                  "name": "onValueChange",
+                  "info_tooltips": "Called whenever the set of open item values changes."
+                },
+                "type": "function",
+                "default": "--"
+              }
+            ]
+          },
+          "item": {
+            "name": "Item",
+            "description": "The item component for the Accordion.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AccordionItem."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the AccordionItem."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "disabled",
+                  "info_tooltips": "Whether to disable the AccordionItem."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "value*",
+                  "info_tooltips": "The item value used for controlled state. If omitted, an internal id is generated."
+                },
+                "type": "string | number",
+                "default": "--"
+              }
+            ]
+          },
+          "header": {
+            "name": "Header",
+            "description": "Wraps an Accordion.Trigger in the appropriate heading semantics.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the Accordion.Header wrapper."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the header as the child element instead of a native heading."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "trigger": {
+            "name": "Trigger",
+            "description": "The trigger component for the Accordion. This component is used to toggle the visibility of the AccordionItem.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AccordionTrigger."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the AccordionTrigger."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "id",
+                  "info_tooltips": "Optional id forwarded to the roving focus item and trigger button."
+                },
+                "type": "string",
+                "default": "--"
+              }
+            ]
+          },
+          "content": {
+            "name": "Content",
+            "description": "Contains the collapsible panel for an Accordion item.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the Accordion.Content element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keep the content mounted even when the item is closed."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the content as the child element instead of a default div wrapper."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          }
+        },
+        "keyboardShortcuts": {
+          "columns": [
+            {
+              "name": "Shortcut",
+              "id": "shortcut"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "shortcut": "<Kbd>Space</Kbd>",
+              "description": "<Text>\r\n              When focus is on an Accordion.Trigger of a collapsed section, expands the section.\r\n            </Text>",
+              "id": "space"
+            },
+            {
+              "shortcut": "<Kbd>Enter</Kbd>",
+              "description": "<Text>\r\n            When focus is on an Accordion.Trigger of an expanded section, collapses the section.\r\n          </Text>",
+              "id": "enter"
+            },
+            {
+              "shortcut": "<Kbd>Tab</Kbd>",
+              "description": "<Text>\r\n            When focus is on an Accordion.Trigger of a collapsed section, focuses the next Accordion.Trigger.\r\n          </Text>",
+              "id": "tab"
+            },
+            {
+              "shortcut": "<Kbd>Shift + Tab</Kbd>",
+              "description": "<Text>\r\n            When focus is on an Accordion.Trigger of an expanded section, focuses the previous Accordion.Trigger.\r\n          </Text>",
+              "id": "shift-tab"
+            },
+            {
+              "shortcut": "<Kbd>ArrowDown</Kbd>",
+              "description": "<Text>\r\n            When focus is on an Accordion.Trigger of a collapsed section, focuses the next Accordion.Trigger.\r\n          </Text>",
+              "id": "arrow-down"
+            },
+            {
+              "shortcut": "<Kbd>ArrowUp</Kbd>",
+              "description": "<Text>\r\n            When focus is on an Accordion.Trigger of an expanded section, focuses the previous Accordion.Trigger.\r\n          </Text>",
+              "id": "arrow-up"
+            },
+            {
+              "shortcut": "<Kbd>Home</Kbd>",
+              "description": "<Text>\r\n            When focus is on an Accordion.Trigger, focuses the first Accordion.Trigger. [TODO]\r\n          </Text>",
+              "id": "home"
+            },
+            {
+              "shortcut": "<Kbd>End</Kbd>",
+              "description": "<Text>\r\n            When focus is on an Accordion.Trigger, focuses the last Accordion.Trigger. [TODO]\r\n          </Text>",
+              "id": "end"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "\"use client\"\r\n\r\nimport type { ComponentProps } from \"react\"\r\nimport Accordion from \"@radui/ui/Accordion\"\r\nimport { ChevronDown } from \"lucide-react\"\r\n\r\n// Mirrors `WithAnimation` in `src/components/ui/Accordion/stories/Accordion.stories.tsx`\r\nconst items = [\r\n  {\r\n    title: \"The Matrix (1999)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: A hacker discovers the true nature of reality and his role in the war against its controllers.</li>\r\n          <li>Key Characters: Neo, Morpheus, Trinity, Agent Smith</li>\r\n          <li>Memorable Quote: &quot;There is no spoon.&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  },\r\n  {\r\n    title: \"The Dark Knight (2008)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: Batman faces his greatest challenge yet as the Joker wreaks havoc on Gotham City.</li>\r\n          <li>Key Characters: Batman, Joker, Harvey Dent, Alfred</li>\r\n          <li>Memorable Quote: &quot;Why so serious?&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  },\r\n  {\r\n    title: \"Inception (2010)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: A thief who enters people&apos;s dreams to steal their secrets must plant an idea in someone&apos;s mind.</li>\r\n          <li>Key Characters: Cobb, Ariadne, Mal, Saito</li>\r\n          <li>Memorable Quote: &quot;You mustn&apos;t be afraid to dream a little bigger, darling.&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  },\r\n  {\r\n    title: \"The Shawshank Redemption (1994)\",\r\n    content: (\r\n      <div>\r\n        <ul>\r\n          <li>Summary: A banker is wrongly convicted</li>\r\n          <li>Key Characters: Andy Dufresne, Red, Warden Norton, Tommy</li>\r\n          <li>Memorable Quote: &quot;Get busy living or get busy dying.&quot;</li>\r\n        </ul>\r\n      </div>\r\n    )\r\n  }\r\n]\r\n\r\ntype AccordionExampleProps = ComponentProps<typeof Accordion.Root>\r\n\r\nconst AccordionExample = ({ ...args }: AccordionExampleProps) => {\r\n  return (\r\n    <div className=\"mx-auto mt-10 w-full max-w-[600px]\">\r\n      <Accordion.Root collapsible transitionDuration={200} {...args}>\r\n        {items.map((item, index) => (\r\n          <Accordion.Item key={index} value={index}>\r\n            <Accordion.Header>\r\n              <Accordion.Trigger>\r\n                {item.title}\r\n                <ChevronDown />\r\n              </Accordion.Trigger>\r\n            </Accordion.Header>\r\n            <Accordion.Content>{item.content}</Accordion.Content>\r\n          </Accordion.Item>\r\n        ))}\r\n      </Accordion.Root>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default AccordionExample\r\n"
+          },
+          "scss": {
+            "code": ".rad-ui-accordion-root{\r\n    //  --------------------------------\r\n    //  --- Component Tokens -----\r\n    //  --------------------------------\r\n    \r\n    --rad-accordion-border-color: var(--rad-ui-color-gray-700);\r\n    --rad-accordion-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-text-color: var(--rad-ui-color-gray-1000);\r\n\r\n    // Trigger Tokens\r\n    --rad-accordion-trigger-background-color: var(--rad-ui-color-gray-50);\r\n    --rad-accordion-trigger-text-color: var(--rad-ui-color-purple-950);\r\n\r\n    // Content Tokens\r\n    --rad-accordion-content-background-color: var(--rad-ui-color-gray-100);\r\n    --rad-accordion-content-text-color: var(--rad-ui-color-gray-950);\r\n\r\n    // Focus Tokens\r\n    --rad-accordion-focus-border-color: var(--rad-ui-color-purple-800);\r\n    --rad-accordion-focus-outline-offset: 1px;\r\n\r\n\r\n    width: 100%;\r\n    border: 1px solid var(--rad-accordion-border-color);\r\n    border-radius: 4px;\r\n\r\n    .rad-ui-accordion-item {\r\n        border-radius: 4px;\r\n\r\n        &[data-disabled]{\r\n            opacity: 0.3;\r\n            pointer-events: none;\r\n            cursor: not-allowed !important;\r\n        }\r\n        \r\n        background-color: var(--rad-accordion-background-color);\r\n\r\n        // not last child\r\n        &:not(:last-child){\r\n            border-bottom: 1px solid var(--rad-accordion-border-color);\r\n        }\r\n\r\n        // Focus state for the entire item (when trigger or content is focused)\r\n        &:focus-within {\r\n            outline: 3px solid var(--rad-accordion-focus-border-color);\r\n            outline-offset: var(--rad-accordion-focus-outline-offset);\r\n        }\r\n\r\n        .rad-ui-accordion-trigger{\r\n            border-radius: 4px;\r\n            width: 100%;\r\n            text-align: left;\r\n            padding:16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-trigger-text-color);\r\n            background-color: var(--rad-accordion-trigger-background-color);\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n\r\n        .rad-ui-accordion-content {\r\n            padding: 16px;\r\n            font-size: 0.85rem;\r\n            color: var(--rad-accordion-content-text-color);\r\n            border-top: 1px solid var(--rad-accordion-border-color);\r\n            background-color: var(--rad-accordion-content-background-color);\r\n\r\n            &[data-state=\"open\"]{\r\n                height: auto;\r\n                border-bottom-left-radius: 4px;\r\n                border-bottom-right-radius: 4px;\r\n            }\r\n\r\n            // Remove default focus outline since parent handles focus-within\r\n            &:focus {\r\n                outline: none;\r\n            }\r\n\r\n            // Focus-visible for keyboard navigation\r\n            &:focus-visible {\r\n                outline: none;\r\n            }\r\n        }\r\n    }\r\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "alert-dialog",
+      "exports": {
+        "code": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport AlertDialog from \"@radui/ui/AlertDialog\";\r\n\r\nconst AlertDialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <AlertDialog.Root>\r\n        <AlertDialog.Trigger>\r\n          Open Dialog\r\n        </AlertDialog.Trigger>\r\n        <AlertDialog.Portal>\r\n          <AlertDialog.Overlay />\r\n          <AlertDialog.Content>\r\n            <AlertDialog.Title>\r\n              Are you sure you want to delete this file?\r\n            </AlertDialog.Title>\r\n            <AlertDialog.Description>\r\n              This action cannot be undone.\r\n            </AlertDialog.Description>\r\n            <AlertDialog.Footer>\r\n              <AlertDialog.Cancel>\r\n                Cancel\r\n              </AlertDialog.Cancel>\r\n              <AlertDialog.Action>\r\n                Delete\r\n              </AlertDialog.Action>\r\n            </AlertDialog.Footer>\r\n          </AlertDialog.Content>\r\n        </AlertDialog.Portal>\r\n      </AlertDialog.Root>\r\n    </div>)\r\n}\r\n\r\nexport default AlertDialogExample;\r\n"
+          },
+          "scss": {
+            "code": "@use 'button';\r\n\r\n.rad-ui-alert-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n.rad-ui-alert-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n  \r\n  &[data-disabled] {\r\n    opacity: 0.5;\r\n    cursor: not-allowed;\r\n    pointer-events: none;\r\n  }\r\n  \r\n}\r\n\r\n.rad-ui-alert-dialog-content {\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-600);\r\n  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n    transform: translate(-50%, -50%) scale(1);\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    transform: translate(-50%, -50%) scale(0.95);\r\n  }\r\n\r\n  .rad-ui-alert-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n\r\n  .rad-ui-alert-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n  \r\n\r\n  .rad-ui-alert-dialog-cancel {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-red-1000);\r\n    background-color: var(--rad-ui-color-red-500);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-red-600);\r\n    }\r\n  }\r\n\r\n  .rad-ui-alert-dialog-action {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border: 1px solid var(--rad-ui-color-gray-500);\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-100);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-300);\r\n    }\r\n  }\r\n}"
+          }
+        },
+        "anatomy": {
+          "code": "import AlertDialog from \"@radui/ui/AlertDialog\";\r\n\r\nexport default () => {\r\n    return (\r\n        <AlertDialog.Root>\r\n            <AlertDialog.Trigger>Open alert</AlertDialog.Trigger>\r\n            <AlertDialog.Portal>\r\n                <AlertDialog.Overlay/>\r\n                <AlertDialog.Content>\r\n                    <AlertDialog.Title>Alert dialog title</AlertDialog.Title>\r\n                    <AlertDialog.Description>Alert dialog description</AlertDialog.Description>\r\n                    <AlertDialog.Footer>\r\n                        <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>\r\n                        <AlertDialog.Action>Confirm</AlertDialog.Action>\r\n                    </AlertDialog.Footer>\r\n                </AlertDialog.Content>\r\n            </AlertDialog.Portal>\r\n        </AlertDialog.Root>\r\n    )\r\n}\r\n"
+        },
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "The custom class name for the AlertDialogRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "open",
+                  "info_tooltips": "The boolean to control the open state of the AlertDialogRoot."
+                },
+                "type": "boolean",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "defaultOpen",
+                  "info_tooltips": "Initial open state when the component is uncontrolled."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "onOpenChange",
+                  "info_tooltips": "The function to handle the open change of the AlertDialogRoot."
+                },
+                "type": "function",
+                "default": "--"
+              }
+            ]
+          },
+          "trigger": {
+            "name": "Trigger",
+            "description": "The trigger component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogTrigger."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the AlertDialogTrigger."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "title": {
+            "name": "Title",
+            "description": "The title component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogTitle."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AlertDialogTitle."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the title as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "id",
+                  "info_tooltips": "Optional id used for aria-labelledby."
+                },
+                "type": "string",
+                "default": "auto"
+              }
+            ]
+          },
+          "description": {
+            "name": "Description",
+            "description": "The description component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogDescription."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AlertDialogDescription."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the description as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "id",
+                  "info_tooltips": "Optional id used for aria-describedby."
+                },
+                "type": "string",
+                "default": "auto"
+              }
+            ]
+          },
+          "portal": {
+            "name": "Portal",
+            "description": "The portal component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AlertDialogPortal."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "container",
+                  "info_tooltips": "Custom DOM node used as the portal mount point."
+                },
+                "type": "Element | null",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keeps portal internals mounted even before opening."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "keepMounted",
+                  "info_tooltips": "Retains portal content in the DOM after close when supported by the primitive."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "overlay": {
+            "name": "Overlay",
+            "description": "The overlay component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogOverlay."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the overlay as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keep the overlay mounted when closed."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "content": {
+            "name": "Content",
+            "description": "The content component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogContent."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AlertDialogContent."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the content as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keep the content mounted when closed."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "footer": {
+            "name": "Footer",
+            "description": "A layout container for alert dialog actions.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the AlertDialog.Footer wrapper."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "cancel": {
+            "name": "Cancel",
+            "description": "The cancel component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogCancel."
+                }
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AlertDialogCancel."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the AlertDialogCancel."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "action": {
+            "name": "Action",
+            "description": "The action component for the AlertDialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AlertDialogAction."
+                }
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AlertDialogAction."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the AlertDialogAction."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          }
+        },
+        "default": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport AlertDialog from \"@radui/ui/AlertDialog\";\r\n\r\nconst AlertDialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <AlertDialog.Root>\r\n        <AlertDialog.Trigger>\r\n          Open Dialog\r\n        </AlertDialog.Trigger>\r\n        <AlertDialog.Portal>\r\n          <AlertDialog.Overlay />\r\n          <AlertDialog.Content>\r\n            <AlertDialog.Title>\r\n              Are you sure you want to delete this file?\r\n            </AlertDialog.Title>\r\n            <AlertDialog.Description>\r\n              This action cannot be undone.\r\n            </AlertDialog.Description>\r\n            <AlertDialog.Footer>\r\n              <AlertDialog.Cancel>\r\n                Cancel\r\n              </AlertDialog.Cancel>\r\n              <AlertDialog.Action>\r\n                Delete\r\n              </AlertDialog.Action>\r\n            </AlertDialog.Footer>\r\n          </AlertDialog.Content>\r\n        </AlertDialog.Portal>\r\n      </AlertDialog.Root>\r\n    </div>)\r\n}\r\n\r\nexport default AlertDialogExample;\r\n"
+          },
+          "scss": {
+            "code": "@use 'button';\r\n\r\n.rad-ui-alert-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n  }\r\n}\r\n\r\n.rad-ui-alert-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n  \r\n  &[data-disabled] {\r\n    opacity: 0.5;\r\n    cursor: not-allowed;\r\n    pointer-events: none;\r\n  }\r\n  \r\n}\r\n\r\n.rad-ui-alert-dialog-content {\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-600);\r\n  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);\r\n  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out;\r\n  \r\n  &[data-state=\"open\"] {\r\n    opacity: 1;\r\n    visibility: visible;\r\n    transform: translate(-50%, -50%) scale(1);\r\n  }\r\n  \r\n  &[data-state=\"closed\"] {\r\n    opacity: 0;\r\n    visibility: hidden;\r\n    transform: translate(-50%, -50%) scale(0.95);\r\n  }\r\n\r\n  .rad-ui-alert-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n\r\n  .rad-ui-alert-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n  \r\n\r\n  .rad-ui-alert-dialog-cancel {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-red-1000);\r\n    background-color: var(--rad-ui-color-red-500);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-red-600);\r\n    }\r\n  }\r\n\r\n  .rad-ui-alert-dialog-action {\r\n    font-weight: 600;\r\n    display: inline-block;\r\n    margin:0 4px;\r\n    border: 1px solid var(--rad-ui-color-gray-500);\r\n    border-radius: 4px;\r\n    padding: 5px 10px;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-100);\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-300);\r\n    }\r\n  }\r\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "aspect-ratio",
+      "exports": {
+        "AspectRatioTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "ratio",
+              "type": "string",
+              "default": "1",
+              "description": "Used to set desired ratio",
+              "id": "ratio"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "import AspectRatio from \"@radui/ui/AspectRatio\"\n\nconst AspectRatioExample = () => (\n    <AspectRatio ratio='16/9'>\n        <img\n        style={{ width: '100%', height: '100%', objectFit: 'cover' }}\n        className=\"Image\"\n        src=\"https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?cs=srgb&dl=pexels-bri-schneiter-28802-346529.jpg&fm=jpg\"\n        alt=\"Landscape photograph\"\n            />\n    </AspectRatio>\n)"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "avatar",
+      "exports": {
+        "code": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport Avatar from \"@radui/ui/Avatar\"\r\n\r\nconst AvatarExample = () => {\r\n    return <Avatar.Root>\r\n        <Avatar.Image src=\"https://i.pravatar.cc/1000\" />\r\n        <Avatar.Fallback>KL</Avatar.Fallback>\r\n    </Avatar.Root>\r\n}\r\n\r\nexport default AvatarExample;"
+          },
+          "scss": {
+            "code": ".rad-ui-avatar{\r\n    position: relative;\r\n    width:36px;\r\n    height:36px;\r\n    border-radius: 100%;\r\n    overflow: hidden;\r\n    border: 1px solid var(--rad-ui-color-gray-600);\r\n    display: flex;\r\n\r\n    .rad-ui-avatar-image{\r\n        position: absolute;\r\n        top: 0;\r\n        left: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        object-fit: cover;\r\n    }\r\n\r\n    .rad-ui-avatar-fallback{\r\n        display: flex;\r\n        align-items: center;\r\n        font-size: 16px;\r\n        justify-content: center;\r\n        color: var(--rad-ui-color-accent-900);\r\n        background-color: var(--rad-ui-color-accent-500);\r\n        width: 100%;\r\n        height:100%;\r\n    }\r\n}\r\n\r\n\r\n"
+          }
+        },
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the Avatar.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AvatarRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "The class name for the AvatarRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the AvatarRoot."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AvatarRoot."
+                },
+                "type": "React.ReactNode",
+                "default": "null"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "The size of the AvatarRoot."
+                },
+                "type": "string",
+                "default": "``"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "The variant of the AvatarRoot."
+                },
+                "type": "string",
+                "default": "``"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "The color of the AvatarRoot."
+                },
+                "type": "string",
+                "default": "``"
+              }
+            ]
+          },
+          "image": {
+            "name": "Image",
+            "description": "The image component for the Avatar.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "src",
+                  "info_tooltips": "The source of the image."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "alt",
+                  "info_tooltips": "The alternative text for the image."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "fallback": {
+            "name": "Fallback",
+            "description": "The fallback component for the Avatar when the image fails to load.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AvatarFallback."
+                },
+                "type": "React.ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AvatarFallback."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the fallback as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          }
+        },
+        "avatarBasicUsageExample": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "src",
+              "type": "string",
+              "default": "null",
+              "description": "URL of the image to be displayed as the avatar.",
+              "id": "src"
+            },
+            {
+              "prop": "fallback",
+              "type": "string",
+              "default": "null",
+              "description": "Text initials or placeholder displayed when the image fails to load or if no src is provided.",
+              "id": "fallback"
+            },
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent Color of the text initials or placeholder displayed when the image fails to load or if no src is provided.",
+              "id": "color"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport Avatar from \"@radui/ui/Avatar\"\r\n\r\nconst AvatarExample = () => {\r\n    return <Avatar.Root>\r\n        <Avatar.Image src=\"https://i.pravatar.cc/1000\" />\r\n        <Avatar.Fallback>KL</Avatar.Fallback>\r\n    </Avatar.Root>\r\n}\r\n\r\nexport default AvatarExample;"
+          },
+          "scss": {
+            "code": ".rad-ui-avatar{\r\n    position: relative;\r\n    width:36px;\r\n    height:36px;\r\n    border-radius: 100%;\r\n    overflow: hidden;\r\n    border: 1px solid var(--rad-ui-color-gray-600);\r\n    display: flex;\r\n\r\n    .rad-ui-avatar-image{\r\n        position: absolute;\r\n        top: 0;\r\n        left: 0;\r\n        width: 100%;\r\n        height: 100%;\r\n        object-fit: cover;\r\n    }\r\n\r\n    .rad-ui-avatar-fallback{\r\n        display: flex;\r\n        align-items: center;\r\n        font-size: 16px;\r\n        justify-content: center;\r\n        color: var(--rad-ui-color-accent-900);\r\n        background-color: var(--rad-ui-color-accent-500);\r\n        width: 100%;\r\n        height:100%;\r\n    }\r\n}\r\n\r\n\r\n"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "avatar-group",
+      "exports": {
+        "code": {
+          "javascript": {},
+          "scss": {}
+        },
+        "anatomy": {},
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the AvatarGroup.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "The custom root class name for the AvatarGroup."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the AvatarGroup."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "The size of the AvatarGroup."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "The variant of the AvatarGroup."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AvatarGroup."
+                },
+                "type": "React.ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "item": {
+            "name": "Item",
+            "description": "The item component for the AvatarGroup.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "The color of the AvatarGroupItem."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AvatarGroupItem."
+                },
+                "type": "React.ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the AvatarGroupItem."
+                },
+                "type": "string",
+                "default": "--"
+              }
+            ]
+          },
+          "avatar": {
+            "name": "Avatar",
+            "description": "The avatar component for the AvatarGroup.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "src",
+                  "info_tooltips": "The source of the avatar."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "alt",
+                  "info_tooltips": "The alt text for the avatar."
+                },
+                "type": "string",
+                "default": "--"
+              }
+            ]
+          },
+          "fallback": {
+            "name": "Fallback",
+            "description": "The fallback component for the AvatarGroup.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the AvatarFallback."
+                },
+                "type": "React.ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the AvatarGroupFallback."
+                },
+                "type": "string",
+                "default": "--"
+              }
+            ]
+          }
+        },
+        "default": {
+          "javascript": {},
+          "scss": {}
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "badge",
+      "exports": {
+        "BadgeTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent color of the component",
+              "id": "color"
+            },
+            {
+              "prop": "size",
+              "type": "string",
+              "default": "null",
+              "description": "Size of the component",
+              "id": "size"
+            },
+            {
+              "prop": "variant",
+              "type": "string",
+              "default": "null",
+              "description": "Variant of the component",
+              "id": "variant"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "import Badge from \"@radui/ui/Badge\"\n\nconst BadgeExample = () => (\n    <div>\n        <Badge>Badge</Badge>\n    </div>\n)"
+          },
+          "scss": {
+            "code": "/** Badge */\n.rad-ui-badge {\n    background-color: var(--rad-ui-color-accent-300);\n    color: var(--rad-ui-color-accent-950);\n    padding:4px 8px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-weight: 600;\n    border-radius: 4px;\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "blockquote",
+      "exports": {
+        "api_documentation": {
+          "blockquote": {
+            "name": "BlockQuote",
+            "description": "A component used to highlight and distinguish quoted content from the surrounding text, often used for testimonials, citations, or emphasis.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The content to be displayed inside the blockquote."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the blockquote."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "Style variant of the blockquote."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "Size variant of the blockquote (small, medium, large, x-large)."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "Color theme of the blockquote."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Multiple size options: small, medium, large, x-large",
+          "Customizable with different color themes",
+          "Clean and simple styling for emphasized quotes",
+          "Follows typography best practices",
+          "Perfect for testimonials and citations"
+        ],
+        "BlockQuoteTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent Color of the quote",
+              "id": "color"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {},
+          "scss": {}
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "button",
+      "exports": {
+        "api_documentation": {
+          "button": {
+            "name": "Button",
+            "description": "An interactive component used to trigger an action or event, such as submitting a form, opening a dialog, or performing a delete operation.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The content to be displayed inside the button."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "type",
+                  "info_tooltips": "The type of the button HTML element."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "button",
+                  "submit",
+                  "reset"
+                ],
+                "default": "'button'"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the button."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "Style variant of the button (solid, soft, outline, ghost)."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "Size variant of the button (small, medium, large)."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "Color theme of the button."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "disabled",
+                  "info_tooltips": "Whether the button is disabled."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Multiple style variants: solid, soft, outline, ghost",
+          "Different size options for various contexts",
+          "Customizable with different color themes",
+          "Support for icons and text content",
+          "Follows accessibility best practices",
+          "Can be used as buttons, links, or form submitters"
+        ],
+        "default": {
+          "javascript": {
+            "code": "import Button from \"@radui/ui/Button\"\n\nconst ButtonExample = () => (\n    <div>\n        <Button color=\"green\">Click Me!</Button>\n    </div>\n)"
+          },
+          "scss": {
+            "code": ".rad-ui-button{\n    height: 32px;\n    border-radius: 4px;\n    display:flex;\n    align-items:center;\n    justify-content:center;\n    padding:0px 12px;\n}\n.button-solid{\n    background-color: var(--rad-ui-color-accent-900);\n    color: white;\n}\n.button-solid:hover{\n    background-color: var(--rad-ui-color-accent-950);\n}\n\n/** Soft */\n.button-soft{\n    color: var(--rad-ui-color-accent-900);\n    background-color:  var(--rad-ui-color-accent-400);\n}\n.button-soft:hover{\n    background-color:  var(--rad-ui-color-accent-500);\n}\n\n\n/**Outline */\n.button-outline{\n    background-color: transparent;\n    color: var(--rad-ui-color-accent-900);\n    border: 1px solid var(--rad-ui-color-accent-900);\n}\n.button-outline:hover{\n    border-color:var(--rad-ui-color-accent-950) ;\n}\n\n/**Ghost */\n.button-ghost{\n    background-color: transparent;\n    color: var(--rad-ui-color-accent-900);\n}\n.button-ghost:hover{\n    border-color:var(--rad-ui-color-accent-950) ;\n    background-color: var(--rad-ui-color-accent-300);\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "callout",
+      "exports": {
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the Callout. Storybook uses it for neutral, colored, and destructive alert states.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The content of the CalloutRoot."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the CalloutRoot."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the CalloutRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "The custom class name for the CalloutRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "The color of the CalloutRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "The variant of the CalloutRoot."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "The size of the CalloutRoot."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "intent",
+                  "info_tooltips": "Semantic intent for alert states such as destructive warnings."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "text": {
+            "name": "Text",
+            "description": "The text component for the Callout. This component is used to display the text content of the Callout.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The content of the CalloutText."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the CalloutText."
+                },
+                "type": "string",
+                "default": "--"
+              }
+            ]
+          },
+          "icon": {
+            "name": "Icon",
+            "description": "The icon component for the Callout. This component is used to display the icon content of the Callout.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The content of the CalloutIcon."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the CalloutIcon."
+                },
+                "type": "string",
+                "default": "--"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Display important messages with visual emphasis",
+          "Supports different colors to indicate message type (info, warning, error, etc.)",
+          "Multiple size variants for different contexts",
+          "Customizable appearance with variant props",
+          "Works well with icons and other components"
+        ],
+        "calloutTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent color of the Callout text.",
+              "id": "color"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {},
+          "scss": {}
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "card",
+      "exports": {
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The outer card container. Storybook uses this as the main entry point, with compound subcomponents inside.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The card sections rendered inside the container."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names applied to the card root."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom class namespace to replace the default card styling hook."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "Visual variant token used by the card theme."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "Size token used by the card theme."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "header": {
+            "name": "Header",
+            "description": "Wraps the title, description, and optional actions at the top of the card.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "Header contents, usually Card.Title and Card.Description."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names for the header wrapper."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "title": {
+            "name": "Title",
+            "description": "A semantic heading used for the card title.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The title text or nodes."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names for the title element."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "description": {
+            "name": "Description",
+            "description": "Supporting text displayed under the card title.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The description text or nodes."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names for the description element."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "content": {
+            "name": "Content",
+            "description": "The main body area for card content.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The main card body contents."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names for the content wrapper."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "footer": {
+            "name": "Footer",
+            "description": "The footer area for actions and secondary content.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "Footer contents, often buttons or links."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names for the footer wrapper."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "action": {
+            "name": "Action",
+            "description": "An action slot for compact controls placed in the card header region.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "Interactive controls or other content rendered in the action slot."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names for the action wrapper."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Provides a consistent container with proper spacing and borders",
+          "Supports custom styling through className and customRootClass",
+          "Supports compound subcomponents for structured layouts",
+          "Supports visual variant and size tokens",
+          "Works well with other components to create structured layouts"
+        ],
+        "default": {
+          "javascript": {
+            "code": "import Card from \"@radui/ui/Card\"\nimport Button from \"@radui/ui/Button\"\n\nconst CardExample = () => (\n    <Card variant=\"outline\" size=\"small\">\n        <Card.Header>\n            <Card.Title>Project Update</Card.Title>\n            <Card.Description>A quick snapshot from the latest activity.</Card.Description>\n        </Card.Header>\n        <Card.Content>\n            <p>The latest changes are ready for review.</p>\n        </Card.Content>\n        <Card.Footer>\n            <Button>Action</Button>\n        </Card.Footer>\n    </Card>\n)"
+          },
+          "scss": {
+            "code": ".rad-ui-card{\n    border: 1px solid var(--rad-ui-color-gray-400);\n    padding: 12px;\n    border-radius: 4px;\n    box-shadow: 1px 1px 4px 1px var(--rad-ui-color-gray-200);\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "code",
+      "exports": {
+        "api_documentation": {
+          "code": {
+            "name": "Code",
+            "description": "A component for displaying inline code snippets using the semantic <code> HTML element.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The code content to display."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "Style variant of the code element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "Size variant of the code element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "Accent color for the code element."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Renders as semantic <code> HTML element",
+          "Pre-styled for code snippets with proper font and background",
+          "Supports custom colors and variants",
+          "Helps maintain consistent code styling across your UI"
+        ],
+        "CodeTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent Color of the code",
+              "id": "color"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "import Code from \"@radui/ui/Code\"\n\nconst CodeExample = () => (\n    <div>\n        <Code>console.log('This is some code')</Code>\n    </div>\n)"
+          },
+          "css": {
+            "code": ".rui-code-root{\n    color: var(--rad-ui-color-accent-950);\n    background-color: var(--rad-ui-color-accent-400);\n    padding: 1px 10px; // Add space for readability\n    display: inline-block;\n    border-radius: 4px;\n    font-size:12px;\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "dialog",
+      "exports": {
+        "code": {
+          "javascript": {
+            "code": "\"use client\"\r\n\r\nimport Dialog from \"@radui/ui/Dialog\";\r\nimport { X } from \"lucide-react\";\r\n\r\nconst DialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <Dialog.Root>\r\n        <Dialog.Trigger>\r\n          Open Dialog\r\n        </Dialog.Trigger>\r\n        <Dialog.Portal>\r\n          <Dialog.Overlay />\r\n          <Dialog.Content>\r\n            <Dialog.Title>\r\n              This message will self destruct in 10 seconds\r\n            </Dialog.Title>\r\n            <Dialog.Description>\r\n              Just kidding, it will not self destruct.\r\n            </Dialog.Description>\r\n            <Dialog.Close>\r\n              <CloseIcon />\r\n            </Dialog.Close>\r\n          </Dialog.Content>\r\n        </Dialog.Portal>\r\n      </Dialog.Root>\r\n    </div>)\r\n}\r\n\r\nconst CloseIcon = ()=> <X size={15} strokeWidth={2} />\r\n\r\nexport default DialogExample;\r\n"
+          },
+          "scss": {
+            "code": "@use 'button';\r\n\r\n.rad-ui-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n}\r\n\r\n.rad-ui-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n}\r\n\r\n.rad-ui-dialog-content {\r\n  position: relative;\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-500);\r\n\r\n  .rad-ui-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n  .rad-ui-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n\r\n  .rad-ui-dialog-close {\r\n    position: absolute;\r\n    right: 12px;\r\n    top: 12px;\r\n    border-radius: 50%;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-500);\r\n    width: 25px;\r\n    height: 25px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-600);\r\n    }\r\n  }\r\n}"
+          }
+        },
+        "anatomy": {
+          "code": "import Dialog from \"@radui/ui/Dialog\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Dialog.Root>\r\n            <Dialog.Trigger>Open dialog</Dialog.Trigger>\r\n            <Dialog.Portal>\r\n                <Dialog.Overlay/>\r\n                <Dialog.Content>\r\n                    <Dialog.Title>Dialog title</Dialog.Title>\r\n                    <Dialog.Description>Dialog description</Dialog.Description>\r\n                    <Dialog.Footer>\r\n                        <Dialog.Close>Close</Dialog.Close>\r\n                    </Dialog.Footer>\r\n                </Dialog.Content>\r\n            </Dialog.Portal>\r\n        </Dialog.Root>\r\n    )\r\n}\r\n"
+        },
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the DialogRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "The custom class name for the DialogRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "open",
+                  "info_tooltips": "The boolean to control the open state of the DialogRoot."
+                },
+                "type": "boolean",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The dialog parts rendered inside the root."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "defaultOpen",
+                  "info_tooltips": "Not supported on this wrapper; control initial state by managing open in your own state."
+                },
+                "type": "n/a",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "onOpenChange",
+                  "info_tooltips": "The function to handle the open change of the DialogRoot."
+                },
+                "type": "function",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "onClickOutside",
+                  "info_tooltips": "The function to handle the click outside of the DialogRoot."
+                },
+                "type": "function",
+                "default": "--"
+              }
+            ]
+          },
+          "trigger": {
+            "name": "Trigger",
+            "description": "The trigger component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the DialogTrigger."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the DialogTrigger."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "title": {
+            "name": "Title",
+            "description": "The title component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the DialogTitle."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the DialogTitle."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "description": {
+            "name": "Description",
+            "description": "The description component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the DialogDescription."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the DialogDescription."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "portal": {
+            "name": "Portal",
+            "description": "The portal component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the DialogPortal."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "container",
+                  "info_tooltips": "Custom DOM node used as the portal mount point."
+                },
+                "type": "Element | null",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keeps portal internals mounted even before opening."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "keepMounted",
+                  "info_tooltips": "Retains portal content in the DOM after close when supported by the primitive."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "overlay": {
+            "name": "Overlay",
+            "description": "The overlay component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the DialogOverlay."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the overlay as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keep the overlay mounted when closed."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "content": {
+            "name": "Content",
+            "description": "The content component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the DialogContent."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the DialogContent."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the content as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keep the content mounted when closed."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "footer": {
+            "name": "Footer",
+            "description": "A layout container for dialog actions.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the Dialog.Footer wrapper."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "close": {
+            "name": "Close",
+            "description": "The close component for the Dialog.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the DialogClose."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the DialogClose."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Whether to use the child component as the DialogClose."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          }
+        },
+        "default": {
+          "javascript": {
+            "code": "\"use client\"\r\n\r\nimport Dialog from \"@radui/ui/Dialog\";\r\nimport { X } from \"lucide-react\";\r\n\r\nconst DialogExample = () => {\r\n  return (\r\n    <div className=\"w-64 md:w-96 flex justify-center items-center\">\r\n      <Dialog.Root>\r\n        <Dialog.Trigger>\r\n          Open Dialog\r\n        </Dialog.Trigger>\r\n        <Dialog.Portal>\r\n          <Dialog.Overlay />\r\n          <Dialog.Content>\r\n            <Dialog.Title>\r\n              This message will self destruct in 10 seconds\r\n            </Dialog.Title>\r\n            <Dialog.Description>\r\n              Just kidding, it will not self destruct.\r\n            </Dialog.Description>\r\n            <Dialog.Close>\r\n              <CloseIcon />\r\n            </Dialog.Close>\r\n          </Dialog.Content>\r\n        </Dialog.Portal>\r\n      </Dialog.Root>\r\n    </div>)\r\n}\r\n\r\nconst CloseIcon = ()=> <X size={15} strokeWidth={2} />\r\n\r\nexport default DialogExample;\r\n"
+          },
+          "scss": {
+            "code": "@use 'button';\r\n\r\n.rad-ui-dialog-overlay {\r\n  position: fixed;\r\n  inset: 0;\r\n  z-index: 50;\r\n  background-color: rgba(0, 0, 0, 0.8);\r\n  overflow: hidden;\r\n}\r\n\r\n.rad-ui-dialog-trigger {\r\n  @extend .rad-ui-button;\r\n}\r\n\r\n.rad-ui-dialog-content {\r\n  position: relative;\r\n  padding:24px;\r\n  border-radius: 8px;\r\n  background-color: var(--rad-ui-color-gray-50);\r\n  color: var(--rad-ui-color-gray-1000);\r\n  width: 100%;\r\n  max-width: 600px;\r\n  margin: 10px auto;\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  z-index: 60;\r\n  border: 1px solid var(--rad-ui-color-gray-500);\r\n\r\n  .rad-ui-dialog-title {\r\n    font-size: 16px;\r\n    font-weight: 600;\r\n    margin-bottom: 10px;\r\n  }\r\n\r\n  .rad-ui-dialog-description {\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    margin-bottom:20px;\r\n    color: var(--rad-ui-color-gray-950);\r\n  }\r\n  \r\n\r\n  .rad-ui-dialog-close {\r\n    position: absolute;\r\n    right: 12px;\r\n    top: 12px;\r\n    border-radius: 50%;\r\n    color: var(--rad-ui-color-gray-1000);\r\n    background-color: var(--rad-ui-color-gray-500);\r\n    width: 25px;\r\n    height: 25px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n\r\n    &:hover {\r\n      background-color: var(--rad-ui-color-gray-600);\r\n    }\r\n  }\r\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "em",
+      "exports": {
+        "api_documentation": {
+          "em": {
+            "name": "Em",
+            "description": "A component for emphasizing text by rendering it as an <em> element with italic styling.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The text content to emphasize."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the em element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Renders as semantic <em> HTML element",
+          "Applies italic styling by default",
+          "Maintains proper emphasis semantics for accessibility",
+          "Customizable with className and style props"
+        ],
+        "default": {
+          "javascript": {},
+          "css": {
+            "code": ".rad-ui-em {\n    font-style: italic;\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "heading",
+      "exports": {
+        "api_documentation": {
+          "heading": {
+            "name": "Heading",
+            "description": "A component for displaying headings with different levels (h1-h6) and customizable styling.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "as",
+                  "info_tooltips": "The HTML heading element to render."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "h1",
+                  "h2",
+                  "h3",
+                  "h4",
+                  "h5",
+                  "h6"
+                ],
+                "default": "h1"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The content of the heading."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the heading element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Six different heading levels (h1-h6)",
+          "Each heading level has appropriate styling out of the box",
+          "Preserves semantic meaning with proper HTML tags",
+          "Customizable with className and style props"
+        ],
+        "headingBasicUsageExample": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "as",
+              "type": "string",
+              "default": "h1",
+              "description": "Allows the component to render different heading levels (h1 to h6)",
+              "id": "src"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "import Heading from \"@radui/ui/Heading\"\n\nconst HeadingExamples = () => (\n    <div>\n        <Heading>Heading 1</Heading>\n        <Heading as=\"h2\">Heading 2</Heading>\n        <Heading as=\"h3\">Heading 3</Heading>\n        <Heading as=\"h4\">Heading 4</Heading>\n        <Heading as=\"h5\">Heading 5</Heading>\n        <Heading as=\"h6\">Heading 6</Heading>\n    </div>\n)"
+          },
+          "css": {
+            "code": ".rad-ui-h1{\n    font-weight: bold;\n    font-size: 60px;\n    letter-spacing: -3.5px;\n    line-height:72px;\n}\n\n.rad-ui-h2{\n    font-weight: bold;\n    font-size: 54px;\n    letter-spacing: -3px;\n    line-height:62px;\n}\n\n.rad-ui-h3{\n    font-weight: bold;\n    font-size: 48px;\n    letter-spacing: -2px;\n    line-height:54px;\n}\n\n.rad-ui-h4{\n    font-weight: bold;\n    font-size: 42px;\n    letter-spacing: -1px;\n    line-height:48px;\n}\n\n.rad-ui-h5{\n    font-weight: bold;\n    font-size: 36px;\n    letter-spacing: -0.5px;\n    line-height:42px;\n}\n\n.rad-ui-h6{\n    font-weight: bold;\n    font-size: 32px;\n    line-height:36px;\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "kbd",
+      "exports": {
+        "api_documentation": {
+          "kbd": {
+            "name": "Kbd",
+            "description": "A component that visually represents keyboard buttons or key combinations, often used in documentation to indicate keyboard shortcuts or commands.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The content to be displayed inside the keyboard key element."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the kbd element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "Size variant of the keyboard key."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Visual representation of keyboard keys and shortcuts",
+          "Pre-styled with appropriate borders and shadows",
+          "Customizable with size variants",
+          "Maintains semantic meaning with proper <kbd> HTML element",
+          "Ideal for documenting keyboard interactions and shortcuts"
+        ],
+        "default": {
+          "javascript": {
+            "code": "import Kbd from \"@radui/ui/Kbd\";\n\nconst KbdExample = () => (\n  <Kbd>Ctrl + C</Kbd>\n)\n"
+          },
+          "css": {
+            "code": ".rad-ui-kbd{\n    user-select: none;\n    font-weight: 400;\n    font-family: inherit;\n    background-color: var(--rad-ui-color-gray-50);\n    color: var(--rad-ui-color-gray-950);\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    border-radius: 4px;\n    border: 1px solid var(--rad-ui-color-gray-500);\n    box-shadow:  0px 0px 3px 1px var(--rad-ui-color-gray-400);\n    padding: 4px 8px;\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "progress",
+      "exports": {
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "Root component for the Progress component.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "The current value of the progress bar. Use null for an indeterminate state."
+                },
+                "type": "number | null",
+                "default": "0"
+              },
+              {
+                "prop": {
+                  "name": "minValue",
+                  "info_tooltips": "The minimum value of the progress bar."
+                },
+                "type": "number",
+                "default": "0"
+              },
+              {
+                "prop": {
+                  "name": "maxValue",
+                  "info_tooltips": "The maximum value of the progress bar."
+                },
+                "type": "number",
+                "default": "100"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "Usually a Progress.Indicator element."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "getValueLabel",
+                  "info_tooltips": "Function used to generate an accessible label for the current value."
+                },
+                "type": "function",
+                "default": "--"
+              }
+            ]
+          },
+          "indicator": {
+            "name": "Indicator",
+            "description": "Indicator component for the Progress component.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "If true, the component will render its children as a child of the component."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the progress indicator."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "style",
+                  "info_tooltips": "Inline styles merged with the computed translateX transform."
+                },
+                "type": "CSSProperties",
+                "default": "--"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Displays completion status visually as a horizontal bar",
+          "Supports minimum and maximum value configuration",
+          "Customizable color themes",
+          "Smooth animations for value changes"
+        ],
+        "default": {
+          "javascript": {},
+          "css": {}
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "separator",
+      "exports": {
+        "api_documentation": {
+          "separator": {
+            "name": "Separator",
+            "description": "A component that visually separates content with a horizontal or vertical line, providing visual hierarchy and improved content organization.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "orientation",
+                  "info_tooltips": "Determines whether the separator displays as a horizontal or vertical line."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "horizontal",
+                  "vertical"
+                ],
+                "default": "'horizontal'"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the separator."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "Color theme of the separator line."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Support for both horizontal and vertical orientation",
+          "Customizable with different color themes",
+          "Helps establish visual hierarchy in layouts",
+          "Simple integration with minimal props required",
+          "Lightweight implementation with proper spacing"
+        ],
+        "SeparatorTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent Color of the separator",
+              "id": "color"
+            },
+            {
+              "prop": "orientation",
+              "type": "horizontal | vertical",
+              "default": "horizontal",
+              "description": "orientation of the separator",
+              "id": "orientation"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "import Separator from \"@radui/ui/Separator\"\nimport Text from \"@radui/ui/Text\"\n\nconst SeparatorExample = () => (\n    <div>\n        <div>\n            <Text>Welcome to Rad UI</Text>\n        </div>\n        <Separator />\n        <div style={{ display:\"flex\", alignItems: \"center\" }}>\n            <Text>Modern</Text>\n            <Separator orientation=\"vertical\" />\n            <Text>Accessible</Text>\n            <Separator orientation=\"vertical\" />\n            <Text>Performant</Text>\n        </div>\n    </div>\n)"
+          },
+          "scss": {
+            "code": "/** Separator */\n.rad-ui-separator {\n    background-color: var(--rad-ui-color-gray-600);\n    align-self: stretch;\n}\n\n.rad-ui-separator-vertical{\n    margin: 0px 8px;\n    width: 1px;\n}\n\n.rad-ui-separator-horizontal{\n    margin: 8px 0px;\n    height: 1px;\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "strong",
+      "exports": {
+        "api_documentation": {
+          "strong": {
+            "name": "Strong",
+            "description": "A component for semantically marking text as important by rendering it as a <strong> element with bold styling.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The text content to be displayed with strong importance."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the strong element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Renders as semantic <strong> HTML element",
+          "Applies bold styling by default",
+          "Maintains proper importance semantics for accessibility",
+          "Customizable with className and style props",
+          "Simple integration with text content"
+        ],
+        "default": {
+          "javascript": {
+            "code": "import Strong from '@radui/ui/Strong'\n\nconst StrongExample = () => (\n    <div className='text-gray-1000'>\n       <p>This is a <Strong>very important</Strong> message.</p>\n    </div>\n)"
+          },
+          "css": {
+            "code": ".rad-ui-strong {\n    font-weight: bold;\n}"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "switch",
+      "exports": {
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "Root component for the Switch component.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the component."
+                },
+                "type": "React.ReactNode",
+                "default": "null"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "Accent color token for the switch."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "variant",
+                  "info_tooltips": "Visual variant token for the switch."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "size",
+                  "info_tooltips": "Visual size token for the switch."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "defaultChecked",
+                  "info_tooltips": "Initial checked state for uncontrolled usage."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "checked",
+                  "info_tooltips": "Controlled checked state."
+                },
+                "type": "boolean",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "onCheckedChange",
+                  "info_tooltips": "Called when the checked state changes."
+                },
+                "type": "function",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "disabled",
+                  "info_tooltips": "Disables the switch."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "required",
+                  "info_tooltips": "Marks the switch as required in forms."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "name",
+                  "info_tooltips": "Form field name."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "Form field value."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the root as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "thumb": {
+            "name": "Thumb",
+            "description": "Thumb component for the Switch component.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "If true, the component will render its children as a child of the component."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the switch thumb."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "Optional thumb contents."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          }
+        },
+        "SwitchTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent Color of the switch",
+              "id": "color"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {},
+          "scss": {}
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "table",
+      "exports": {
+        "code": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport Table from \"@radui/ui/Table\";\r\n\r\nconst columns = [\r\n  { name: 'Name', id: 'name' },\r\n  { name: 'Role', id: 'role' },\r\n  { name: 'Ability', id: 'ability' },\r\n  { name: 'Ship', id: 'ship' },\r\n  { name: 'Status', id: 'status' }\r\n];\r\n\r\nconst data = [\r\n  { \r\n    id: '1', \r\n    name: 'Neo (Thomas Anderson)', \r\n    role: 'The One', \r\n    ability: 'Code manipulation, Flight', \r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '2', \r\n    name: 'Trinity', \r\n    role: 'First Mate', \r\n    ability: 'Hacking, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '3', \r\n    name: 'Morpheus', \r\n    role: 'Captain', \r\n    ability: 'Leadership, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '4', \r\n    name: 'Agent Smith', \r\n    role: 'Agent', \r\n    ability: 'Replication, Possession',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '5', \r\n    name: 'Cypher', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Traitor' \r\n  },\r\n  { \r\n    id: '6', \r\n    name: 'Oracle', \r\n    role: 'Guide', \r\n    ability: 'Foresight',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '7', \r\n    name: 'Niobe', \r\n    role: 'Captain', \r\n    ability: 'Piloting, Combat',\r\n    ship: 'Logos',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '8', \r\n    name: 'Tank', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Born Free' \r\n  }\r\n];\r\n\r\nconst TableExample = () => {\r\n  return (\r\n  <div className=\"w-full max-w-4xl\">\r\n     <Table.Root>\r\n            <Table.Head>\r\n                <Table.Row>\r\n                    {columns.map((column) => (\r\n                        <Table.ColumnCellHeader key={column.id}>\r\n                            {column.name}\r\n                        </Table.ColumnCellHeader>\r\n                    ))}\r\n                </Table.Row>\r\n            </Table.Head>\r\n            <Table.Body>\r\n                {data.map((row) => (\r\n                    <Table.Row key={row.id}>\r\n                        {columns.map((column) => (\r\n                            <Table.Cell key={`${row.id}-${column.id}`}>\r\n                                {row[column.id]}\r\n                            </Table.Cell>\r\n                        ))}\r\n                    </Table.Row>\r\n                ))}\r\n            </Table.Body>\r\n        </Table.Root>\r\n  </div>)\r\n}\r\n\r\nexport default TableExample;"
+          },
+          "scss": {
+            "code": ".rad-ui-table-wrapper{\r\n    border: 1px solid var(--rad-ui-color-accent-500);\r\n    border-radius: 12px;\r\n    overflow: hidden;\r\n\r\n    .rad-ui-table{\r\n        width: 100%;\r\n        text-align: left;\r\n        vertical-align: top;\r\n        border-radius: calc(10px);\r\n        border-spacing: 0;\r\n        box-sizing: border-box;\r\n        color: var(--rad-ui-color-gray-1000);\r\n\r\n        .header{\r\n            padding: 12px;\r\n            vertical-align: inherit;\r\n            font-weight: 700;\r\n            font-size:14px;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-500);\r\n\r\n            .cell-header{\r\n                padding: 12px;\r\n                vertical-align: inherit;\r\n                font-weight: 500;\r\n                background-color: var(--rad-ui-color-accent-200);\r\n            }\r\n        }\r\n    \r\n        .row{\r\n            vertical-align: inherit;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-300);\r\n            background-color: var(--rad-ui-color-accent-50);\r\n\r\n            &:last-child{\r\n                border-bottom: none;\r\n            }\r\n        }\r\n    \r\n        .cell{\r\n            padding: 0.75rem 1rem;\r\n            vertical-align: inherit;\r\n            color: var(--rad-ui-color-gray-1000);\r\n            font-weight: 300;\r\n            font-size: 14px;\r\n        }\r\n    }\r\n\r\n}\r\n\r\n"
+          }
+        },
+        "anatomy": {
+          "code": "import Table from \"@radui/ui/Table\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Table.Root>\r\n            <Table.Head>\r\n                <Table.Row>\r\n                    <Table.ColumnCellHeader>Column header</Table.ColumnCellHeader>\r\n                </Table.Row>\r\n            </Table.Head>\r\n            <Table.Body>\r\n                <Table.Row>\r\n                    <Table.Cell>Cell</Table.Cell>\r\n                </Table.Row>\r\n            </Table.Body>\r\n        </Table.Root>\r\n    )\r\n}\r\n"
+        },
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the Table.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the TableRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the Root."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom class namespace used to swap the default table styles."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          },
+          "head": {
+            "name": "Head",
+            "description": "The head component for the Table.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the TableHead."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the Head."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "body": {
+            "name": "Body",
+            "description": "The body component for the Table.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the Body."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the Body."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "row": {
+            "name": "Row",
+            "description": "The row component for the Table.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the TableRow."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the Row."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "column_header": {
+            "name": "ColumnCellHeader",
+            "description": "The table header-cell component rendered inside a Table.Row.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the ColumnCellHeader."
+                },
+                "type": "string",
+                "default": "cell-header"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The contents of the header cell."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "cell": {
+            "name": "Cell",
+            "description": "The cell component for the Table.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the Cell."
+                },
+                "type": "string",
+                "default": "cell"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the Cell."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          }
+        },
+        "default": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport Table from \"@radui/ui/Table\";\r\n\r\nconst columns = [\r\n  { name: 'Name', id: 'name' },\r\n  { name: 'Role', id: 'role' },\r\n  { name: 'Ability', id: 'ability' },\r\n  { name: 'Ship', id: 'ship' },\r\n  { name: 'Status', id: 'status' }\r\n];\r\n\r\nconst data = [\r\n  { \r\n    id: '1', \r\n    name: 'Neo (Thomas Anderson)', \r\n    role: 'The One', \r\n    ability: 'Code manipulation, Flight', \r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '2', \r\n    name: 'Trinity', \r\n    role: 'First Mate', \r\n    ability: 'Hacking, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '3', \r\n    name: 'Morpheus', \r\n    role: 'Captain', \r\n    ability: 'Leadership, Combat',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '4', \r\n    name: 'Agent Smith', \r\n    role: 'Agent', \r\n    ability: 'Replication, Possession',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '5', \r\n    name: 'Cypher', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Traitor' \r\n  },\r\n  { \r\n    id: '6', \r\n    name: 'Oracle', \r\n    role: 'Guide', \r\n    ability: 'Foresight',\r\n    ship: 'None',\r\n    status: 'Program' \r\n  },\r\n  { \r\n    id: '7', \r\n    name: 'Niobe', \r\n    role: 'Captain', \r\n    ability: 'Piloting, Combat',\r\n    ship: 'Logos',\r\n    status: 'Awakened' \r\n  },\r\n  { \r\n    id: '8', \r\n    name: 'Tank', \r\n    role: 'Operator', \r\n    ability: 'Matrix Monitoring',\r\n    ship: 'Nebuchadnezzar',\r\n    status: 'Born Free' \r\n  }\r\n];\r\n\r\nconst TableExample = () => {\r\n  return (\r\n  <div className=\"w-full max-w-4xl\">\r\n     <Table.Root>\r\n            <Table.Head>\r\n                <Table.Row>\r\n                    {columns.map((column) => (\r\n                        <Table.ColumnCellHeader key={column.id}>\r\n                            {column.name}\r\n                        </Table.ColumnCellHeader>\r\n                    ))}\r\n                </Table.Row>\r\n            </Table.Head>\r\n            <Table.Body>\r\n                {data.map((row) => (\r\n                    <Table.Row key={row.id}>\r\n                        {columns.map((column) => (\r\n                            <Table.Cell key={`${row.id}-${column.id}`}>\r\n                                {row[column.id]}\r\n                            </Table.Cell>\r\n                        ))}\r\n                    </Table.Row>\r\n                ))}\r\n            </Table.Body>\r\n        </Table.Root>\r\n  </div>)\r\n}\r\n\r\nexport default TableExample;"
+          },
+          "scss": {
+            "code": ".rad-ui-table-wrapper{\r\n    border: 1px solid var(--rad-ui-color-accent-500);\r\n    border-radius: 12px;\r\n    overflow: hidden;\r\n\r\n    .rad-ui-table{\r\n        width: 100%;\r\n        text-align: left;\r\n        vertical-align: top;\r\n        border-radius: calc(10px);\r\n        border-spacing: 0;\r\n        box-sizing: border-box;\r\n        color: var(--rad-ui-color-gray-1000);\r\n\r\n        .header{\r\n            padding: 12px;\r\n            vertical-align: inherit;\r\n            font-weight: 700;\r\n            font-size:14px;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-500);\r\n\r\n            .cell-header{\r\n                padding: 12px;\r\n                vertical-align: inherit;\r\n                font-weight: 500;\r\n                background-color: var(--rad-ui-color-accent-200);\r\n            }\r\n        }\r\n    \r\n        .row{\r\n            vertical-align: inherit;\r\n            border-bottom: 1px solid var(--rad-ui-color-accent-300);\r\n            background-color: var(--rad-ui-color-accent-50);\r\n\r\n            &:last-child{\r\n                border-bottom: none;\r\n            }\r\n        }\r\n    \r\n        .cell{\r\n            padding: 0.75rem 1rem;\r\n            vertical-align: inherit;\r\n            color: var(--rad-ui-color-gray-1000);\r\n            font-weight: 300;\r\n            font-size: 14px;\r\n        }\r\n    }\r\n\r\n}\r\n\r\n"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "tabs",
+      "exports": {
+        "code": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport Tabs from \"@radui/ui/Tabs\";\r\nimport { useState } from \"react\";\r\n\r\nconst items = [\r\n  {\r\n    id: \"react\",\r\n    title: \"React\",\r\n    content: \"React is a JavaScript library for building user interfaces.\"\r\n  },\r\n  {\r\n    id: \"angular\",\r\n    title: \"Angular\",\r\n    content: \"Angular is a platform and framework for building single-page client applications using HTML and TypeScript.\"\r\n  },\r\n  {\r\n    id: \"vue\",\r\n    title: \"Vue\",\r\n    content: \"Vue.js is a progressive framework for building user interfaces.\"\r\n  }\r\n]\r\n\r\nconst TabsExample = () => {\r\n  const [activeTab, setActiveTab] = useState(items[0].id);\r\n  return  <div className=\"w-64 md:w-96\">\r\n      <Tabs.Root value={activeTab} onValueChange={setActiveTab}>\r\n        <Tabs.List>\r\n          {items.map((item) => (\r\n            <Tabs.Trigger key={item.id} value={item.id}>{item.title}</Tabs.Trigger>\r\n          ))}\r\n        </Tabs.List>\r\n        {items.map((item) => (\r\n          <Tabs.Content key={item.id} value={item.id}>{item.content}</Tabs.Content>\r\n        ))}\r\n      </Tabs.Root>\r\n    </div>\r\n}\r\n\r\nexport default TabsExample;"
+          },
+          "scss": {
+            "code": "/** TABS  */\r\n.rad-ui-tabs{\r\n    .rad-ui-tabs-list{\r\n        display: flex;\r\n        box-shadow: inset 0 -1px 0 0 var(--rad-ui-color-gray-500);\r\n\r\n\r\n        .rad-ui-tabs-trigger {\r\n            color: var(--rad-ui-color-accent-600);\r\n            font-family: inherit;\r\n            padding: 10px;\r\n            display: flex;\r\n            align-items: center;\r\n            height:42px;\r\n            font-size: 15px;\r\n            line-height: 1;\r\n            cursor: pointer;\r\n\r\n\r\n            &:focus-visible{\r\n                background-color: var(--rad-ui-color-accent-100);\r\n                outline:2px solid var(--rad-ui-color-blue-950);\r\n                outline-offset: 2px;\r\n                border-radius: 1px;\r\n            }\r\n\r\n            &.active{\r\n                color: var(--rad-ui-color-accent-950);\r\n                border-bottom:2px solid var(--rad-ui-color-accent-900);\r\n            }\r\n\r\n            &:hover{\r\n                color: var(--rad-ui-color-accent-900);\r\n            }\r\n        }\r\n    }\r\n\r\n    .rad-ui-tab-content{\r\n        padding:20px 0;\r\n        color : var(--rad-ui-color-gray-1000);\r\n    }\r\n    \r\n}\r\n\r\n\r\n\r\n"
+          }
+        },
+        "anatomy": {
+          "code": "import Tabs from \"@radui/ui/Tabs\";\r\n\r\nexport default () => {\r\n    return (\r\n        <Tabs.Root>\r\n            <Tabs.List>\r\n                <Tabs.Trigger />\r\n            </Tabs.List>\r\n            <Tabs.Content />\r\n        </Tabs.Root>\r\n    )\r\n}"
+        },
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The root component for the Tabs.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the TabRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "The custom class name for the TabRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the TabRoot."
+                },
+                "type": "ReactNode",
+                "required": true
+              },
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "The value of the TabRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "The color of the TabRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "defaultValue",
+                  "info_tooltips": "The default value of the TabRoot."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "onValueChange",
+                  "info_tooltips": "The onValueChange of the TabRoot."
+                },
+                "type": "function",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "orientation",
+                  "info_tooltips": "Layout orientation for keyboard navigation and data attributes."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "horizontal",
+                  "vertical"
+                ],
+                "default": "horizontal"
+              },
+              {
+                "prop": {
+                  "name": "dir",
+                  "info_tooltips": "Text direction used by roving focus."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "ltr",
+                  "rtl"
+                ],
+                "default": "ltr"
+              },
+              {
+                "prop": {
+                  "name": "activationMode",
+                  "info_tooltips": "Whether focusing a trigger activates it automatically or only on click/enter/space."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "automatic",
+                  "manual"
+                ],
+                "default": "automatic"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the root as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "trigger": {
+            "name": "Trigger",
+            "description": "The trigger component for the Tabs. This component is used to toggle the visibility of the Tab.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the TabTrigger."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the TabTrigger."
+                },
+                "type": "ReactNode",
+                "required": true
+              },
+              {
+                "prop": {
+                  "name": "disabled",
+                  "info_tooltips": "Whether the TabTrigger is disabled."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "The value of the TabTrigger."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the trigger as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "list": {
+            "name": "List",
+            "description": "The list component for the Tabs. This component is used to display the list of Tabs.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the TabsList."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the TabsList."
+                },
+                "type": "ReactNode"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the list as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          },
+          "content": {
+            "name": "Content",
+            "description": "The content component for the Tabs. This component is used to display the content of the Tabs.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name for the TabContent."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "The value of the TabContent."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the TabContent."
+                },
+                "type": "ReactNode",
+                "default": "--",
+                "required": true
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom class namespace used for the content wrapper."
+                },
+                "type": "string",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the content as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "forceMount",
+                  "info_tooltips": "Keep the content mounted even when it is inactive."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          }
+        },
+        "default": {
+          "javascript": {
+            "code": "\"use client\"\r\nimport Tabs from \"@radui/ui/Tabs\";\r\nimport { useState } from \"react\";\r\n\r\nconst items = [\r\n  {\r\n    id: \"react\",\r\n    title: \"React\",\r\n    content: \"React is a JavaScript library for building user interfaces.\"\r\n  },\r\n  {\r\n    id: \"angular\",\r\n    title: \"Angular\",\r\n    content: \"Angular is a platform and framework for building single-page client applications using HTML and TypeScript.\"\r\n  },\r\n  {\r\n    id: \"vue\",\r\n    title: \"Vue\",\r\n    content: \"Vue.js is a progressive framework for building user interfaces.\"\r\n  }\r\n]\r\n\r\nconst TabsExample = () => {\r\n  const [activeTab, setActiveTab] = useState(items[0].id);\r\n  return  <div className=\"w-64 md:w-96\">\r\n      <Tabs.Root value={activeTab} onValueChange={setActiveTab}>\r\n        <Tabs.List>\r\n          {items.map((item) => (\r\n            <Tabs.Trigger key={item.id} value={item.id}>{item.title}</Tabs.Trigger>\r\n          ))}\r\n        </Tabs.List>\r\n        {items.map((item) => (\r\n          <Tabs.Content key={item.id} value={item.id}>{item.content}</Tabs.Content>\r\n        ))}\r\n      </Tabs.Root>\r\n    </div>\r\n}\r\n\r\nexport default TabsExample;"
+          },
+          "scss": {
+            "code": "/** TABS  */\r\n.rad-ui-tabs{\r\n    .rad-ui-tabs-list{\r\n        display: flex;\r\n        box-shadow: inset 0 -1px 0 0 var(--rad-ui-color-gray-500);\r\n\r\n\r\n        .rad-ui-tabs-trigger {\r\n            color: var(--rad-ui-color-accent-600);\r\n            font-family: inherit;\r\n            padding: 10px;\r\n            display: flex;\r\n            align-items: center;\r\n            height:42px;\r\n            font-size: 15px;\r\n            line-height: 1;\r\n            cursor: pointer;\r\n\r\n\r\n            &:focus-visible{\r\n                background-color: var(--rad-ui-color-accent-100);\r\n                outline:2px solid var(--rad-ui-color-blue-950);\r\n                outline-offset: 2px;\r\n                border-radius: 1px;\r\n            }\r\n\r\n            &.active{\r\n                color: var(--rad-ui-color-accent-950);\r\n                border-bottom:2px solid var(--rad-ui-color-accent-900);\r\n            }\r\n\r\n            &:hover{\r\n                color: var(--rad-ui-color-accent-900);\r\n            }\r\n        }\r\n    }\r\n\r\n    .rad-ui-tab-content{\r\n        padding:20px 0;\r\n        color : var(--rad-ui-color-gray-1000);\r\n    }\r\n    \r\n}\r\n\r\n\r\n\r\n"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "text",
+      "exports": {
+        "api_documentation": {
+          "text": {
+            "name": "Text",
+            "description": "A component for displaying text content with customizable styling.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "as",
+                  "info_tooltips": "The HTML element to render the text as."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "p",
+                  "span",
+                  "div",
+                  "label"
+                ],
+                "default": "p"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The text content to display."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class names to apply to the text element."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom root class name to override default styling."
+                },
+                "type": "string",
+                "default": "''"
+              }
+            ]
+          }
+        },
+        "features": [
+          "Renders as different HTML elements (p, span, div, label)",
+          "Customizable with className and style props",
+          "Preserves accessibility with proper semantic elements",
+          "Lightweight and simple to use"
+        ],
+        "default": {
+          "javascript": {
+            "code": "import Text from \"@radui/ui/Text\"\n\nconst TextExample = () => (\n    <div>\n        <Text>Lorem ipsum</Text>\n    </div>\n)"
+          },
+          "css": {
+            "code": ".rad-ui-text{\n    font-size: 16px;\n    line-height: 24px;\n    }\n"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "toggle",
+      "exports": {
+        "ToggleTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "color",
+              "type": "string",
+              "default": "null",
+              "description": "Accent Color of the toggled item",
+              "id": "color"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "\nimport Toggle from \"@radui/ui/Toggle\";\n\nconst ToggleExample = () => {\n  const [pressed, setPressed] = React.useState(false)\n\n  const handleChange = (newPressed) => {\n    setPressed(newPressed)\n  }\n  \n  return (\n    <Toggle pressed={pressed} onPressedChange={handleChange}>\n      <Icon />\n    </Toggle>\n  )\n}"
+          },
+          "css": {
+            "code": ".rad-ui-toggle {\n    box-shadow: 0 2px 10px var(--rad-ui-color-gray-700);\n    color: var(--rad-ui-color-gray-1000);\n    background-color: var(--rad-ui-color-accent-50);\n    height: 35px;\n    width: 35px;\n    border-radius: 4px;\n    display: flex;\n    font-size: 15px;\n    line-height: 1;\n    align-items: center;\n    justify-content: center;\n    border: 0 none;\n\n    outline: none;\n\n    &[data-state=on]{\n        background-color: var(--rad-ui-color-accent-500);\n\n    }\n\n    &:focus {\n        box-shadow: 0 0 0 2px var(--rad-ui-color-accent-1000);\n    }\n}   \n"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "toggle-group",
+      "exports": {
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "Root component for the ToggleGroup component.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "type",
+                  "info_tooltips": "The type of the toggle group."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "single",
+                  "multiple"
+                ],
+                "default": "single"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "The class name of the toggle group."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "loop",
+                  "info_tooltips": "Whether the toggle group should loop."
+                },
+                "type": "boolean",
+                "default": "true"
+              },
+              {
+                "prop": {
+                  "name": "orientation",
+                  "info_tooltips": "The orientation of the toggle group."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "horizontal",
+                  "vertical"
+                ],
+                "default": "horizontal"
+              },
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "Controlled active value or values."
+                },
+                "type": "any",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "defaultValue",
+                  "info_tooltips": "Initial active value or values for uncontrolled usage."
+                },
+                "type": "any",
+                "default": "[]"
+              },
+              {
+                "prop": {
+                  "name": "onValueChange",
+                  "info_tooltips": "Called when the active value set changes."
+                },
+                "type": "function",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "color",
+                  "info_tooltips": "The color of the toggle group."
+                },
+                "type": "string",
+                "default": "null"
+              },
+              {
+                "prop": {
+                  "name": "customRootClass",
+                  "info_tooltips": "Custom class namespace used to swap the default toggle-group styles."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "disabled",
+                  "info_tooltips": "Disables the entire toggle group."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "dir",
+                  "info_tooltips": "Text direction used by roving focus."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "ltr",
+                  "rtl"
+                ],
+                "default": "ltr"
+              },
+              {
+                "prop": {
+                  "name": "rovingFocus",
+                  "info_tooltips": "Whether arrow-key focus management is enabled."
+                },
+                "type": "boolean",
+                "default": "true"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the root as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the toggle group."
+                },
+                "type": "React.ReactNode",
+                "default": "null"
+              }
+            ]
+          },
+          "item": {
+            "name": "Item",
+            "description": "Item component for the ToggleGroup component.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The children of the component."
+                },
+                "type": "React.ReactNode",
+                "default": "null"
+              },
+              {
+                "prop": {
+                  "name": "value",
+                  "info_tooltips": "The value of the toggle item."
+                },
+                "type": "any",
+                "default": "null"
+              },
+              {
+                "prop": {
+                  "name": "iconOnly",
+                  "info_tooltips": "Square dimensions for icon-only items; omit when the item has visible text."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional class names for the toggle item."
+                },
+                "type": "string",
+                "default": "''"
+              },
+              {
+                "prop": {
+                  "name": "disabled",
+                  "info_tooltips": "Disables this toggle item."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the item as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              }
+            ]
+          }
+        },
+        "default": {
+          "javascript": {},
+          "css": {}
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "tooltip",
+      "exports": {
+        "anatomy": {
+          "code": "import Tooltip from \"@radui/ui/Tooltip\";\r\n\r\nexport default () => {\r\n  return (\r\n    <Tooltip.Root>\r\n      <Tooltip.Trigger>\r\n        {/* Your trigger element */}\r\n      </Tooltip.Trigger>\r\n      <Tooltip.Content>\r\n        {/* Your tooltip content */}\r\n      </Tooltip.Content>\r\n    </Tooltip.Root>\r\n  );\r\n} "
+        },
+        "api_documentation": {
+          "root": {
+            "name": "Root",
+            "description": "The wrapper component that provides context for the tooltip.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The trigger and content elements rendered inside Tooltip.Root."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "placement",
+                  "info_tooltips": "Preferred floating placement for the tooltip content."
+                },
+                "type": "enum",
+                "enum_values": [
+                  "top",
+                  "bottom",
+                  "left",
+                  "right",
+                  "top-start",
+                  "top-end",
+                  "bottom-start",
+                  "bottom-end",
+                  "left-start",
+                  "left-end",
+                  "right-start",
+                  "right-end"
+                ],
+                "default": "top"
+              }
+            ]
+          },
+          "trigger": {
+            "name": "Trigger",
+            "description": "The element that triggers the tooltip. Must be an interactive element.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "asChild",
+                  "info_tooltips": "Render the trigger as the child element."
+                },
+                "type": "boolean",
+                "default": "false"
+              },
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The interactive element that receives hover and focus handlers."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              }
+            ]
+          },
+          "content": {
+            "name": "Content",
+            "description": "The content displayed inside the tooltip.",
+            "columns": [
+              {
+                "name": "Prop",
+                "id": "prop"
+              },
+              {
+                "name": "Type",
+                "id": "type"
+              },
+              {
+                "name": "Default",
+                "id": "default"
+              }
+            ],
+            "data": [
+              {
+                "prop": {
+                  "name": "children",
+                  "info_tooltips": "The tooltip contents rendered inside the floating panel."
+                },
+                "type": "ReactNode",
+                "default": "--"
+              },
+              {
+                "prop": {
+                  "name": "showArrow",
+                  "info_tooltips": "Whether to render the floating arrow."
+                },
+                "type": "boolean",
+                "default": "true"
+              },
+              {
+                "prop": {
+                  "name": "className",
+                  "info_tooltips": "Additional CSS class name for styling."
+                },
+                "type": "string",
+                "default": "--"
+              }
+            ]
+          }
+        },
+        "keyboardShortcuts": {
+          "columns": [
+            {
+              "name": "Shortcut",
+              "id": "shortcut"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "shortcut": "<Kbd>Tab</Kbd>",
+              "description": "<Text>\r\n                Moves focus to the trigger element.\r\n            </Text>",
+              "id": "tab"
+            },
+            {
+              "shortcut": "<Kbd>Space</Kbd>",
+              "description": "<Text>\r\n                When focus is on the trigger, toggles the tooltip.\r\n            </Text>",
+              "id": "space"
+            },
+            {
+              "shortcut": "<Kbd>Enter</Kbd>",
+              "description": "<Text>\r\n                When focus is on the trigger, toggles the tooltip.\r\n            </Text>",
+              "id": "enter"
+            },
+            {
+              "shortcut": "<Kbd>Escape</Kbd>",
+              "description": "<Text>\r\n                Dismisses an open tooltip.\r\n            </Text>",
+              "id": "escape"
+            }
+          ]
+        },
+        "TooltipTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "content",
+              "type": "string",
+              "default": "null",
+              "description": "content/text on hover",
+              "id": "src"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {},
+          "css": {
+            "code": "todo"
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "component": "visually-hidden",
+      "exports": {
+        "VisuallyHiddenTable": {
+          "columns": [
+            {
+              "name": "Prop",
+              "id": "prop"
+            },
+            {
+              "name": "Type",
+              "id": "type"
+            },
+            {
+              "name": "Default",
+              "id": "default"
+            },
+            {
+              "name": "Description",
+              "id": "description"
+            }
+          ],
+          "data": [
+            {
+              "prop": "asChild",
+              "type": "boolean",
+              "default": "false",
+              "description": "renders the children in desired element",
+              "id": "asChild"
+            }
+          ]
+        },
+        "default": {
+          "javascript": {
+            "code": "import Button from \"@radui/ui/Button\"\nimport VisuallyHidden from \"@radui/ui/VisuallyHidden\"\n\nconst VisuallyHiddenExample = () => (\n    <Button>\n        <VisuallyHidden>Search documentation</VisuallyHidden>\n        <span aria-hidden=\"true\">⌕</span>\n    </Button>\n)"
+          }
+        }
+      },
+      "notes": []
+    }
+  ]
+}
